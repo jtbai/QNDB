@@ -57,7 +57,7 @@ if(isset($_GET['IDPeriode'])||(isset($_GET['IDPiscine'])AND isset($_GET['Jour'])
 		$MainOutput->AddLink('index.php?Section=Periode&ToPrint='.$_GET['ToPrint'].'&IDPeriode='.$Rep2[0],'<img src=images/prev.png border=0>');
 	
 	// HEAD LINE OR BOTTOM LINE 
-	$Title = $InfoP['Nom']." - ".$NDay[$Info['Jour']]." (".$sh."h".$sm." ‡ ".$eh."h".$em.") ";
+	$Title = $InfoP['Nom']." - ".$NDay[$Info['Jour']]." (".$sh."h".$sm." √† ".$eh."h".$em.") ";
 	if(!$ToPrint)
 		$MainOutput->AddTexte($Title,'Titre');
 
@@ -74,7 +74,16 @@ if(isset($_GET['IDPeriode'])||(isset($_GET['IDPiscine'])AND isset($_GET['Jour'])
 	$MainOutput->CloseRow();
 	$MainOutput->OpenRow();
 	while($Rep=$SQL->FetchArray()){
-		$Date = getdate($Rep['Semaine']+$Info['Jour']*60*60*24);
+        //il y a un peu de magie √† faire ici pour les changements d'heures...
+        //je m'attends √† ce que la variable $Rep['Semaine'] soit le dimanche √† minuit. si ce n'est pas le cas je dois modifier
+        //De plus, il se peut que la fonction de projection des jours ne fonctionne pas (parce que certains jours ont plus ou moins de 24h...
+        $CurrentDay =1; //On commence √† 1 parce que si la journ√©e est le dimanche (=0) alors je ne veux pas ajouter de jours...
+        $UsableTimeStamp = $Rep['Semaine'];
+        while($CurrentDay<=$Info['Jour']){
+            $UsableTimeStamp += get_day_length($UsableTimeStamp);
+            $CurrentDay++;
+        }
+		$Date = getdate($UsableTimeStamp);
 		if($Rep['Semaine']==$Info['Semaine']){
 			$Class= 'TitreLink';
 			$IDPeriode = $Rep['IDPeriode'];
@@ -150,7 +159,7 @@ if(isset($_GET['IDPeriode'])||(isset($_GET['IDPiscine'])AND isset($_GET['Jour'])
 }
 	}
 	else{
-//Table bidon qui servira ‡ventuellement ‡ faire entrer les plans de piscine
+//Table bidon qui servira ÔøΩventuellement ÔøΩ faire entrer les plans de piscine
 
 			$MainOutput->OpenTable();
 				$MainOutput->OpenRow();
@@ -218,7 +227,7 @@ IF(ISSET($Rapport))
 	$MainOutput->OpenTable();
 	$MainOutput->OpenRow();
 	$MainOutput->OpenCol('100%',8);
-	$MainOutput->AddTexte('Liste des pÈriodes de cours','Titre');
+	$MainOutput->AddTexte('Liste des pÔøΩriodes de cours','Titre');
 	$MainOutput->AddLink('index.php?Section=FormPeriode','<img src=images/insert.png border=0>');
 	$MainOutput->AddLink('index.php?Section=FormModifPeriode','<img src=images/edit.png border=0>');
 	$MainOutput->AddLink('index.php?Section=Remplacement','<img src=images/empl.png border=0>');
