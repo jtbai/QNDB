@@ -1,0 +1,122 @@
+.titre
+{
+	font-family: Tahoma;
+	font-size: 12;
+		color: black;
+	font-variant: normal;
+	font-weight: bold;
+}
+.BigHead
+{
+	font-family: Tahoma;
+	font-size: 18;
+	font-variant: normal;
+	font-weight: bold;
+}
+.titre2
+{
+	font-family: Tahoma;
+	font-size: 11;
+	font-variant: normal;
+	font-weight: bold;
+}
+.Small
+{
+	font-family: Tahoma;
+	font-size: 10;
+	font-variant: normal;
+}
+.warning
+{
+	font-family: Tahoma;
+	font-size: 12;
+	font-variant: normal;
+	font-weight: bold;
+	color: red;
+}
+.texte
+{
+	font-family: Tahoma;
+	font-size: 12;
+	color: black;
+	font-variant: normal;
+	text-decoration: none;
+}
+
+.inputtext
+{
+	font-family: Tahoma;
+	font-size: 12;
+	font-variant: normal;
+}
+.inputselect
+{
+	font-family: Tahoma;
+	font-size: 12;
+	font-variant: normal;
+}
+.textarea
+{
+	font-family: Tahoma;
+	font-size: 12;
+	font-variant: normal;
+}
+.Titrelink
+{
+	font-family: arial ;
+	font-size: 12;
+	color: black;
+	font-variant: normal;
+	font-weight: bold;
+	text-decoration: underline;
+}
+.link
+{
+	font-family: arial ;
+	font-size: 12;
+	color: black;
+	font-variant: normal;
+	text-decoration: underline;
+}
+.link2
+{
+	font-family: arial ;
+	font-size: 12;
+	color: black;
+	font-variant: normal;
+	
+}
+.TitreSection
+{
+	font-family: Arial Black;
+	font-size: 14;
+	font-variant: normal;
+	color : 5DBCFE;
+}
+.MenuTitre
+{
+	font-family: Tahoma;
+	font-weight: bold;
+	font-size: 14;
+	font-variant: normal;
+	color : white;
+}
+
+.Bullet
+{
+	font-family: Tahoma;
+	font-size: 11;
+	font-variant: normal;
+}
+
+
+.plan{
+	border-width: 2;
+	border-style: solid;
+	border-color: #000000
+}
+.planout{
+	border-width: 1;
+	border-style: solid;
+	border-color: #000000
+}

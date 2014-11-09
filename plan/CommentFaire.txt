@@ -1,0 +1,8 @@
+Comment faire un plan de piscine
+
+1) Générer le code HTML pour faire un tableau.
+2) Insérer des zone en faisant <-$NoZone-> Ex:(<-1->,<-2->,...,<-10->)
+3) Ajouter l'attribut bgcolor=#FFFFFF
+4) Ajouter dans la DB le nom du plan et sont nom de fichier
+5) Sauvegarder le tableau dans le répertoire /plan
+6) s'assurer que dans chaque balise <table> et <td> il y aie class=plan

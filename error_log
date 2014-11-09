@@ -1,0 +1,36 @@
+[06-Oct-2014 19:45:04] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/qcnat/public_html/QNDB/rsud/mysql_class.php on line 126
+[06-Oct-2014 19:45:04] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/qcnat/public_html/QNDB/rsud/mysql_class.php on line 126
+[09-Oct-2014 09:12:11] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/qcnat/public_html/QNDB/rsud/mysql_class.php on line 126
+[09-Oct-2014 09:12:11] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/qcnat/public_html/QNDB/rsud/mysql_class.php on line 126
+[09-Oct-2014 11:54:36] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/qcnat/public_html/QNDB/rnord/mysql_class.php on line 126
+[09-Oct-2014 11:54:36] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/qcnat/public_html/QNDB/rnord/mysql_class.php on line 126
+[09-Oct-2014 11:54:36] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/qcnat/public_html/QNDB/rnord/mysql_class.php on line 126
+[09-Oct-2014 11:55:00] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/qcnat/public_html/QNDB/rnord/mysql_class.php on line 126
+[09-Oct-2014 11:55:00] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/qcnat/public_html/QNDB/rnord/mysql_class.php on line 126
+[09-Oct-2014 11:55:00] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/qcnat/public_html/QNDB/rnord/mysql_class.php on line 126
+[09-Oct-2014 11:55:00] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/qcnat/public_html/QNDB/rnord/mysql_class.php on line 126
+[09-Oct-2014 11:55:00] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/qcnat/public_html/QNDB/rnord/mysql_class.php on line 126
+[09-Oct-2014 11:55:00] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/qcnat/public_html/QNDB/rnord/mysql_class.php on line 126
+[09-Oct-2014 11:55:00] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/qcnat/public_html/QNDB/rnord/mysql_class.php on line 126
+[10-Oct-2014 12:55:04] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/qcnat/public_html/QNDB/rnord/mysql_class.php on line 126
+[10-Oct-2014 12:55:04] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/qcnat/public_html/QNDB/rnord/mysql_class.php on line 126
+[10-Oct-2014 15:50:36] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/qcnat/public_html/QNDB/rsud/mysql_class.php on line 126
+[10-Oct-2014 15:50:36] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/qcnat/public_html/QNDB/rsud/mysql_class.php on line 126
+[14-Oct-2014 10:29:42] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/qcnat/public_html/QNDB/rnord/mysql_class.php on line 126
+[17-Oct-2014 22:33:02] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/qcnat/public_html/QNDB/rsud/mysql_class.php on line 126
+[17-Oct-2014 22:33:02] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/qcnat/public_html/QNDB/rsud/mysql_class.php on line 126
+[28-Oct-2014 23:52:39] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/qcnat/public_html/QNDB/rsud/mysql_class.php on line 126
+[28-Oct-2014 23:52:39] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/qcnat/public_html/QNDB/rsud/mysql_class.php on line 126
+[07-Nov-2014 21:21:37] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/qcnat/public_html/QNDB/rsud/mysql_class.php on line 126
+[07-Nov-2014 21:21:37] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/qcnat/public_html/QNDB/rsud/mysql_class.php on line 126
+[07-Nov-2014 21:21:48] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/qcnat/public_html/QNDB/rsud/mysql_class.php on line 126
+[07-Nov-2014 21:21:48] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/qcnat/public_html/QNDB/rsud/mysql_class.php on line 126
+[08-Nov-2014 19:05:30] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/qcnat/public_html/QNDB/rnord/mysql_class.php on line 126
+[08-Nov-2014 19:05:30] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/qcnat/public_html/QNDB/rnord/mysql_class.php:126) in /home/qcnat/public_html/QNDB/action_case_login.php on line 7
+[08-Nov-2014 19:05:30] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/qcnat/public_html/QNDB/rnord/mysql_class.php:126) in /home/qcnat/public_html/QNDB/action_case_login.php on line 8
+[08-Nov-2014 19:05:30] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/qcnat/public_html/QNDB/rnord/mysql_class.php on line 126
+[08-Nov-2014 19:05:30] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/qcnat/public_html/QNDB/rnord/mysql_class.php:126) in /home/qcnat/public_html/QNDB/action_case_login.php on line 10
+[08-Nov-2014 19:06:27] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/qcnat/public_html/QNDB/rnord/mysql_class.php on line 126
+[08-Nov-2014 19:06:27] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/qcnat/public_html/QNDB/rnord/mysql_class.php on line 126
+[08-Nov-2014 19:07:34] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/qcnat/public_html/QNDB/rnord/mysql_class.php on line 126
+[08-Nov-2014 19:07:34] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/qcnat/public_html/QNDB/rnord/mysql_class.php on line 126
