@@ -227,7 +227,7 @@ IF(ISSET($Rapport))
 	$MainOutput->OpenTable();
 	$MainOutput->OpenRow();
 	$MainOutput->OpenCol('100%',8);
-	$MainOutput->AddTexte('Liste des p?riodes de cours','Titre');
+	$MainOutput->AddTexte('Liste des périodes de cours','Titre');
 	$MainOutput->AddLink('index.php?Section=FormPeriode','<img src=images/insert.png border=0>');
 	$MainOutput->AddLink('index.php?Section=FormModifPeriode','<img src=images/edit.png border=0>');
 	$MainOutput->AddLink('index.php?Section=Remplacement','<img src=images/empl.png border=0>');
