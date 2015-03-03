@@ -1,5 +1,5 @@
 <?PHP
-//Premièrement Enlever de l'horaire la personne
+//Premi?rement Enlever de l'horaire la personne
 $Rapport = new HTML;
 
 	$Rapport->OpenTable(300);
@@ -10,7 +10,7 @@ $Rapport = new HTML;
 	$Rapport->CloseRow();
 
 	
-if($_POST['FORMFROM5']<>"" AND $_POST['FORMIDEmployeS']<>""){
+if($_POST['MultiVar_FROM5']<>"" AND $_POST['FORMIDEmployeS']<>""){
 
 $SQL = new sqlclass;
 $SQL2 = new sqlclass;
@@ -19,11 +19,11 @@ $SQL2 = new sqlclass;
 if(!isset($_POST['FORMLastminute']))
 	$_POST['FORMLastminute']="0";
 	
-	$FROM = mktime(0,0,0,$_POST['FORMFROM4'],$_POST['FORMFROM5'],$_POST['FORMFROM3']);
-	if($_POST['FORMTO5']=="")
+	$FROM = mktime(0,0,0,$_POST['MultiVar_FROM4'],$_POST['MultiVar_FROM5'],$_POST['MultiVar_FROM3']);
+	if($_POST['MultiVar_TO5']=="")
 		$TO = $FROM;
 	else
-		$TO = mktime(0,0,0,$_POST['FORMTO4'],$_POST['FORMTO5'],$_POST['FORMTO3']);
+		$TO = mktime(0,0,0,$_POST['MultiVar_TO4'],$_POST['MultiVar_TO5'],$_POST['MultiVar_TO3']);
 	
 	$Req = "SELECT IDRessource, IDCours, Semaine+(60*60*24)*Jour as T, Start, End FROM ressource JOIN periode on periode.IDPeriode = ressource.IDPeriode WHERE periode.Semaine+(60*60*24)*periode.Jour>=".$FROM." AND periode.Semaine+(60*60*24)*periode.Jour<=".$TO." AND IDEmploye=".$_POST['FORMIDEmployeS']." ORDER BY Semaine ASC, Jour ASC, Start ASC";
 	$SQL->SELECT($Req);

@@ -4,8 +4,8 @@ if($_POST['Update']){
 	if($_POST['FORMTitre']==""){
 	$Req = "DELETE FROM message WHERE IDMessage = ".$_POST['IDMessage'];
 	}else{
-	$Start = mktime(0,0,0,$_POST['FORMStart4'],$_POST['FORMStart5'],$_POST['FORMStart3']);
-	$End = mktime(0,0,0,$_POST['FORMEnd4'],$_POST['FORMEnd5'],$_POST['FORMEnd3']);
+	$Start = mktime(0,0,0,$_POST['MultiVar_Start4'],$_POST['MultiVar_Start5'],$_POST['MultiVar_Start3']);
+	$End = mktime(0,0,0,$_POST['MultiVar_End4'],$_POST['MultiVar_End5'],$_POST['MultiVar_End3']);
 	$Req = "UPDATE message
 	Set `Start` = ".$Start.",
 	`End` = ".$End.",
@@ -15,18 +15,18 @@ if($_POST['Update']){
 	WHERE IDMessage = ".$_POST['IDMessage'];
 	}
 	$SQL->INSERT($Req);
-	$MainOutput->AddTexte('Message modifié','Warning');
+	$MainOutput->AddTexte('Message modifiÃ©','Warning');
 }else{
 	$SQL = new sqlclass;
-	$Start = mktime(0,0,0,$_POST['FORMStart4'],$_POST['FORMStart5'],$_POST['FORMStart3']);
-	if($_POST['FORMEnd5']==""){
+	$Start = mktime(0,0,0,$_POST['MultiVar_Start4'],$_POST['MultiVar_Start5'],$_POST['MultiVar_Start3']);
+	if($_POST['MultiVar_End5']==""){
 		$End = $Start+7*24*60*60;
 	}else{
-		$End = mktime(0,0,0,$_POST['FORMEnd4'],$_POST['FORMEnd5'],$_POST['FORMEnd3']);
+		$End = mktime(0,0,0,$_POST['MultiVar_End4'],$_POST['MultiVar_End5'],$_POST['MultiVar_End3']);
 	}
 	$Req = "INSERT INTO message(`Start`,`End`,`Titre`,`Texte`,`IDEmploye`) VALUES('".$Start."','".$End."','".addslashes($_POST['FORMTitre'])."','".addslashes($_POST['FORMTexte'])."','".$_POST['FORMIDEmploye']."')";
 	$SQL->INSERT($Req);
-	$MainOutput->AddTexte('Message ajouté','Warning');
+	$MainOutput->AddTexte('Message ajoutÃ©','Warning');
 }
 
 ?>

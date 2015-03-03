@@ -16,7 +16,7 @@ if($_POST['FORMStartTime1']=="")
 
 $ACT = "";
 if($_POST['FORMEndTime2']=="" or $_POST['FORMEndTime2']==0 OR $_POST['FORMStartTime2']==0 OR $_POST['FORMStartTime2']==""){
-	//cas où il manque soit l'heure de début et/ou de fin
+	//cas oï¿½ il manque soit l'heure de dï¿½but et/ou de fin
 	$ACT = "DELETE";
 }else{
 	//on cheke les overlap
@@ -31,7 +31,7 @@ if($_POST['FORMEndTime2']=="" or $_POST['FORMEndTime2']==0 OR $_POST['FORMStartT
 	if(!$OverLap){
 	$ACT = "UPDATE";
 
-		//trouver les périodes avant qui doivent ajuster leurs heures
+		//trouver les pï¿½riodes avant qui doivent ajuster leurs heures
 		$Req = "SELECT IDPeriode FROM periode WHERE IDPiscine=".$PeriodeIniInfo['IDPiscine']." AND IDSession=".$PeriodeIniInfo['IDSession']." AND End=".$PeriodeIniInfo['Start']." AND Jour=".$PeriodeIniInfo['Jour']." Limit 0,1";
 		$SQL->SELECT($Req);
 		while($Rep = $SQL->FetchArray()){
@@ -43,7 +43,7 @@ if($_POST['FORMEndTime2']=="" or $_POST['FORMEndTime2']==0 OR $_POST['FORMStartT
 			$Req2 = "UPDATE periode set End = ".$NStart." WHERE IDPeriode in (".substr($Couple,1).")";
 			$SQL2->QUERY($Req2);
 		}
-		//Trouver les périods après qui doivent faire changer leur heure
+		//Trouver les pï¿½riods aprï¿½s qui doivent faire changer leur heure
 		$Req = "SELECT IDPeriode FROM periode WHERE IDPiscine=".$PeriodeIniInfo['IDPiscine']." AND IDSession=".$PeriodeIniInfo['IDSession']." AND Start=".$PeriodeIniInfo['End']." AND Jour=".$PeriodeIniInfo['Jour']." Limit 0,1";
 		$SQL->SELECT($Req);
 		while($Rep = $SQL->FetchArray()){
@@ -56,7 +56,7 @@ if($_POST['FORMEndTime2']=="" or $_POST['FORMEndTime2']==0 OR $_POST['FORMStartT
 			$SQL2->QUERY($Req2);
 		}
 	}else
-		$WarnOutput->addtexte("Le changement n'a pas pu être effectué: vous écrasez une période adjacente",'Warning');
+		$WarnOutput->addtexte("Le changement n'a pas pu Ãªtre effectuÃ©: vous Ã©crasez une pÃ©riode adjacente",'Warning');
 	
 }
 
@@ -65,9 +65,9 @@ if($_POST['FORMEndTime2']=="" or $_POST['FORMEndTime2']==0 OR $_POST['FORMStartT
 $SP = get_similar_periode($_POST['IDPeriode'],TRUE,'IDPeriode, Semaine');
 $i=1;
 foreach($SP as $k=>$v){
-	$ArrayMap5 = "FORMPeriode".$k.'5';
-	$ArrayMap4 = "FORMPeriode".$k.'4';
-	$ArrayMap3 = "FORMPeriode".$k.'3';
+	$ArrayMap5 = "MultiVar_Periode".$k.'5';
+	$ArrayMap4 = "MultiVar_Periode".$k.'4';
+	$ArrayMap3 = "MultiVar_Periode".$k.'3';
 	if ($_POST[$ArrayMap5]=="" or $_POST[$ArrayMap4]=="" or $_POST[$ArrayMap3] ==""){
 		$ReqSP = "DELETE FROM Periode WHERE IDPeriode = ".$k;
 			$SQL2->QUERY($ReqSP);

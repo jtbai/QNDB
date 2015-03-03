@@ -1,13 +1,13 @@
 <?PHP
 
-// il faudrait ajouter de quoi ici pour vérifier qu'il n'y pas pas déjà un cours du même niveau de fait
+// il faudrait ajouter de quoi ici pour vï¿½rifier qu'il n'y pas pas dï¿½jï¿½ un cours du mï¿½me niveau de fait
 // question de pas se ramasser avec 300 niveau 2 exemple
 
 $Last1 = get_last('periode');
 if(!isset($Last1['IDPeriode']))
 	$Last1['IDPeriode']=0;
-$Date = mktime(0,0,0,$_POST['FORMStartDate4'],$_POST['FORMStartDate5'],$_POST['FORMStartDate3']);
-$TimeIni = $_POST['FORMStartTime2']*3600+$_POST['FORMStartTime1']*60;
+$Date = mktime(0,0,0,$_POST['MultiVar_StartDate4'],$_POST['MultiVar_StartDate5'],$_POST['MultiVar_StartDate3']);
+$TimeIni = $_POST['MultiVar_StartTime2']*3600+$_POST['MultiVar_StartTime1']*60;
 $DateIni = $Date;
 if($_POST['FORMDuree2']==""){
 	$Duration = intval($_POST['FORMDuree']);
@@ -79,7 +79,7 @@ if($Couple<>"")
 	$WarnOutput->AddTexte('Période(s) ajoutée(s)','warning');
 if($Deja<>""){
 $WarnOutput->br();
-$WarnOutput->Addtexte('Ces périodes existent déjà','Warning');
+$WarnOutput->Addtexte('Ces périodes existent déjà ','Warning');
 $WarnOutput->br();
 $WarnOutput->AddTexte($Deja,'Warning');
 }

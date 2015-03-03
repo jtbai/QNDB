@@ -92,7 +92,7 @@ if(isset($_COOKIE['Status']) AND $_COOKIE['Status']=="Bureau"){
 		
 		CASE "AddCours":{
 			include('action_case_addcours.php');
-			$WarnOutput->addtexte("Cours ajout�s",'warning');
+			$WarnOutput->addtexte("Cours ajout?s",'warning');
 		if($_POST['FORMNiveau']==46)
 			$Section = "Inscripteur";
 		else
@@ -101,21 +101,21 @@ if(isset($_COOKIE['Status']) AND $_COOKIE['Status']=="Bureau"){
 		}
 		CASE "AddCours2":{
 			include('action_case_addcours2.php');
-			$WarnOutput->addtexte("Cours ajout�s",'warning');
+			$WarnOutput->addtexte("Cours ajout?s",'warning');
 			$Section = "Cours";
 		BREAK;
 		}
 		
 		CASE "AddRessource":{
 			include('action_case_addressource.php');
-			$WarnOutput->addtexte("Ressource ajout�e",'warning');
+			$WarnOutput->addtexte("Ressource ajout?e",'warning');
 			$Section = "ModifieCours";
 		BREAK;
 		}
 		
 		CASE "RemoveRessource":{	
 			include('action_case_removeressource.php');
-			$WarnOutput->addtexte("Ressource effac�e",'warning');
+			$WarnOutput->addtexte("Ressource effac?e",'warning');
 			$Section = "ModifieCours";
 		BREAK;
 		}
@@ -170,7 +170,7 @@ if(isset($_COOKIE['Status']) AND $_COOKIE['Status']=="Bureau"){
 			if(WriteAccess())
 				include('action_case_modifperiode.php');
 			else
-				$WarnOutput->addtexte("Il n'est pas possible de modifier les p�riodes: vous n'avec pas les droits en �criture sur cette session",'warning');
+				$WarnOutput->addtexte("Il n'est pas possible de modifier les p?riodes: vous n'avec pas les droits en ?criture sur cette session",'warning');
 			BREAK;
 		}
 		
@@ -180,7 +180,7 @@ if(isset($_COOKIE['Status']) AND $_COOKIE['Status']=="Bureau"){
 			if(WriteAccess())
 				include('action_case_modifieperiode.php');
 			else
-				$WarnOutput->addtexte("Il n'est pas possible de modifier les p�riodes: vous n'avec pas les droits en �criture sur cette session",'warning');
+				$WarnOutput->addtexte("Il n'est pas possible de modifier les p?riodes: vous n'avec pas les droits en ?criture sur cette session",'warning');
 		
 			BREAK;
 		}
@@ -191,7 +191,7 @@ if(isset($_COOKIE['Status']) AND $_COOKIE['Status']=="Bureau"){
 			if(WriteAccess())
 				include('action_case_addperiode.php');
 			else
-				$WarnOutput->addtexte("Il n'est pas possible d'ajouter de p�riode: vous n'avec pas les droits en �criture sur cette session",'warning');
+				$WarnOutput->addtexte("Il n'est pas possible d'ajouter de p?riode: vous n'avec pas les droits en ?criture sur cette session",'warning');
 		
 		BREAK;
 		}
@@ -199,7 +199,7 @@ if(isset($_COOKIE['Status']) AND $_COOKIE['Status']=="Bureau"){
 		CASE "MoveNiveau" : {
 			move_rank($_GET['IDNiveau'],$_GET['Direction']);
 			$Section= $_GET['PostBack'];
-			$WarnOutput->AddTexte("Rang du niveau modifi�",'warning');
+			$WarnOutput->AddTexte("Rang du niveau modifi?",'warning');
 		BREAK;
 		}
 		

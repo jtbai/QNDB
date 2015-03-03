@@ -1,12 +1,12 @@
 <?PHP
-if(!isset($_GET['FORMTime4'])){
+if(!isset($_GET['MultiVar_Time4'])){
 $MainOutput->AddForm('Calculer un férié','index.php','GET');
 $MainOutput->inputtime('Time','Date','Date',array('Time'=>FALSE,'Date'=>TRUE));
 $MainOutput->inputhidden_env('ToPrint','TRUE');
 $MainOutput->inputhidden_env('Section','Calcul_Ferie');
 $MainOutput->formSubmit('Calculer');
 }else{
-$Date = get_last_sunday(0,mktime(0,0,0,$_GET['FORMTime4'],$_GET['FORMTime5'],$_GET['FORMTime3']));
+$Date = get_last_sunday(0,mktime(0,0,0,$_GET['MultiVar_Time4'],$_GET['MultiVar_Time5'],$_GET['MultiVar_Time3']));
 $SQL = new sqlclass;
 $Req = "SELECT IDPaye FROM paye WHERE Semaine1=".$Date." OR Semaine2=".$Date;
 $SQL->SELECT($Req);

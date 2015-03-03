@@ -1,7 +1,7 @@
 <?PHP
 $SQL2 = new sqlclass;
-$SD = mktime(0,0,0,$_POST['FORMSTART4'],$_POST['FORMSTART5'],$_POST['FORMSTART3']);
-$ED = mktime(0,0,0,$_POST['FORMEND4'],$_POST['FORMEND5'],$_POST['FORMEND3']);
+$SD = mktime(0,0,0,$_POST['MultiVar_START4'],$_POST['MultiVar_START5'],$_POST['MultiVar_START3']);
+$ED = mktime(0,0,0,$_POST['MultiVar_END4'],$_POST['MultiVar_END5'],$_POST['MultiVar_END3']);
 foreach($_POST['FORMIDPiscine'] as $k=>$v){
 	$Req = "SELECT DISTINCT IDPeriode, Jour, Start FROM periode WHERE IDPiscine=$k and Semaine+Jour*(60*60*24)+Start >".$SD." AND Semaine+Jour*(60*60*24)+Start <".$ED." GROUP BY Semaine, Jour, Start ORDER BY Semaine ASC, Jour ASC, Start ASC";
 	$SQL->SELECT($Req);

@@ -1,15 +1,39 @@
 <?PHP
 ##########################################
-#       CETTE CLASSE HTML À ÉTÉ          #
-# PROGRAMMÉE PAR L'UNIQUE ET FANTASTIQUE #
+#       CETTE CLASSE HTML ? ?T?          #
+# PROGRAMM?E PAR L'UNIQUE ET FANTASTIQUE #
 #             MASTAJEET                  #
 #  UTILISATION PERMISE POUR QN		     #
 ##########################################
 
+class MultiVarDataType {
+    CONST Date = 1;
+    CONST Time =2;
+    CONST DateTime =3;
+    CONST PhoneNumber = 4;
+}
+date_default_timezone_set('America/Montreal');
+
 
 class HTML
 {
-	var $output;
+
+    private $NBMultivar;
+
+
+    public function __construct(){
+
+        $this->NBMultivar = 0;
+    }
+
+    function inputmultivar($name,$FieldType){
+        $this->inputhidden_env('MultiVarData'.$this->NBMultivar,$name);
+        $this->inputhidden_env($name,$FieldType);
+        $this->NBMultivar++;
+    }
+
+
+    var $output;
 	var $formname;
 	
 	function addoutput($string,$nl2br=1,$strip=1){
@@ -109,7 +133,7 @@ class HTML
 	$this->closerow();
 	$this->closetable();
 	}
-	
+
 	function addphone($number,$IND=FALSE,$class='Texte'){
 		if(strlen($number>=7)){
 			if($IND){
@@ -119,7 +143,7 @@ class HTML
 				}else{
 				$this->AddTexte(substr($number,3,3)."-".substr($number,6,4),$class);
 					if(strlen(substr($number,10,4))>1)
-						$this->AddTexte(" #".substr($number,10,4));	
+						$this->AddTexte(" #".substr($number,10,4));
 			}
 		}
 	}
@@ -183,86 +207,101 @@ class HTML
 		$this->closerow();
 	}
 
-	function inputphone($name, $description=NULL, $value="",$EXT=FALSE){
-		if($description==NULL)
-		{
-		$description=$name;
-		}
-		$this->openrow();
-		$this->opencol();
-		$this->addtexte(ucfirst($description),"titre");
-		$this->closecol();
-		$this->opencol();
-		$this->addtexte("(");
-		$this->addoutput("<input type=text name=\"".$this->formname.$name."1\" size=3 value=\"".substr($value,0,3)."\" class=inputtext>");
-		$this->addtexte(")&nbsp;");
-		$this->addoutput("<input type=text name=\"".$this->formname.$name."2\" size=3 value=\"".substr($value,3,3)."\" class=inputtext>");
-		$this->addtexte("-");
-		$this->addoutput("<input type=text name=\"".$this->formname.$name."3\" size=4 value=\"".substr($value,6,4)."\" class=inputtext>");
-		if($EXT){
-			$this->addtexte(" #");
-			$this->addoutput("<input type=text name=\"".$this->formname.$name."4\" size=4 value=\"".substr($value,10,5)."\" class=inputtext>");
-		}
+    function inputphone($name, $description=NULL, $value="",$EXT=FALSE){
+        if($description==NULL)
+        {
+            $description=$name;
+        }
+        $this->openrow();
+        $this->opencol();
+        $this->addtexte(ucfirst($description),"titre");
+        $this->closecol();
+        $this->opencol();
+        $this->addtexte("(");
+        $this->addoutput("<input type=text name=\"MultiVar_".$name."1\" size=3 value=\"".substr($value,0,3)."\" class=inputtext>");
+        $this->addtexte(")&nbsp;");
+        $this->addoutput("<input type=text name=\"MultiVar_".$name."2\" size=3 value=\"".substr($value,3,3)."\" class=inputtext>");
+        $this->addtexte("-");
+        $this->addoutput("<input type=text name=\"MultiVar_".$name."3\" size=4 value=\"".substr($value,6,4)."\" class=inputtext>");
+        if($EXT){
+            $this->addtexte(" #");
+            $this->addoutput("<input type=text name=\"MultiVar_".$name."4\" size=4 value=\"".substr($value,10,5)."\" class=inputtext>");
+        }
+        $this->inputmultivar($name,MultiVarDataType::PhoneNumber);
+        $this->closecol();
+        $this->closerow();
+    }
 
-		$this->closecol();
-		$this->closerow();
-	}
-	
-	function inputtime($name, $description=NULL, $value=0,$val=array('Date'=>False,'Time'=>True)){
-		
-		if($value==0){
-			$Heure = "0";
-			$Min = "0";
-			$Jour = "";
-			$Mois = "";
-			$Year = Date("Y",time());
-		}else{
-			if($value>86400){
-				$Hour = bcmod($value,86400);
-				$Jour = date('d',$value);
-				$Mois = date('m',$value);
-				$Year = date('Y',$value);
-				$value = $Hour;
-			}
-			$Min = bcmod($value,3600)/60;
-			$Heure = ($value-$Min*60)/3600;
-		}
-		if($description==NULL){
-			$description=$name;
-		}
-		$this->openrow();
-		$this->opencol();
-		$this->addtexte(ucfirst($description),"titre");
-		$this->closecol();
-		$this->opencol();
+    function inputtime($name, $description=NULL, $value=0, $val=array('Date'=>False,'Time'=>True)){
+        if($value=="")
+            $value=0;
+        $GETDATE = getdate($value);
 
-		if($val['Date']){
-			$this->addoutput("<input type=text name=\"".$this->formname.$name."5\" size=2 maxlength=2 value=\"".$Jour."\" class=inputtext>");
-			$this->addtexte("&nbsp;");
-			$this->addoutput("<select name=\"".$this->formname.$name."4\" class=inputselect>");
-			$this->addoutput("<option value=' '> </option>");
-			$month = get_month_list();
-			foreach($month as $v => $o){
-				$text = "";
-				if($v==$Mois){
-					$text = "SELECTED ";
-				}
-				$this->addoutput("<option value='".$v."' ".$text.">".$o."</option>");
-			}
-			$this->addoutput("</select>");
-			$this->addtexte("&nbsp;");
-			$this->addoutput("<input type=text name=\"".$this->formname.$name."3\" maxlength=4 size=4 value=\"".$Year."\" class=inputtext>");
-			$this->addtexte("&nbsp;");
-		}
-		if($val['Time']){
-		$this->addoutput("<input type=text name=\"".$this->formname.$name."2\" size=1 maxlength=2 value=\"".$Heure."\" class=inputtext>");
-		$this->addtexte(":");
-		$this->addoutput("<input type=text name=\"".$this->formname.$name."1\" size=1  maxlength=2 value=\"".$Min."\" class=inputtext>");
-}
+        if($value==0){
+            $Heure = "0";
+            $Min = "0";
+            $Jour = "";
+            $Mois = "";
+            $Year = Date("Y",time());
+        }else{
+            if($value>86400){
 
-		$this->closecol();
-		$this->closerow();
-	}
+                $Jour = $GETDATE['mday'];
+                $Mois = $GETDATE['mon'];
+                $Year = $GETDATE['year'];
+                $Min = $GETDATE['minutes'];
+                $Heure = $GETDATE['hours'];
+            }else{
+                $Heure = floor($value/3600);
+                $Min = floor(($value-$Heure*3600)/60);
+
+            }
+        }
+        if($description==NULL){
+            $description=$name;
+        }
+        $this->openrow();
+        $this->opencol();
+        $this->addtexte(ucfirst($description),"titre");
+        $this->closecol();
+        $this->opencol();
+
+        if($val['Date']){
+            $this->addoutput("<input type=text name=\"MultiVar_".$name."5\" size=2 maxlength=2 value=\"".$Jour."\" class=inputtext>");
+            $this->addtexte("&nbsp;");
+            $this->addoutput("<select name=\"MultiVar_".$name."4\" class=inputselect>");
+            $this->addoutput("<option value=' '> </option>");
+            $month = get_month_list();
+            foreach($month as $v => $o){
+                $text = "";
+
+                if($v==$Mois){
+                    $text = "SELECTED ";
+                }
+                $this->addoutput("<option value='".$v."' ".$text.">".$o."</option>");
+            }
+            $this->addoutput("</select>");
+            $this->addtexte("&nbsp;");
+            $this->addoutput("<input type=text name=\"MultiVar_".$name."3\" maxlength=4 size=4 value=\"".$Year."\" class=inputtext>");
+            $this->addtexte("&nbsp;");
+        }
+        if($val['Time']){
+            $this->addoutput("<input type=text name=\"MultiVar_".$name."2\" size=1 maxlength=2 value=\"".$Heure."\" class=inputtext>");
+            $this->addtexte(":");
+            $this->addoutput("<input type=text name=\"MultiVar_".$name."1\" size=1  maxlength=2 value=\"".$Min."\" class=inputtext>");
+
+        }
+        if($val['Time'] and $val['Date']){
+            $this->inputmultivar($name,MultiVarDataType::DateTime);
+        }elseif($val['Date']){
+            $this->inputmultivar($name,MultiVarDataType::Date);
+        }elseif($val['Time']){
+            $this->inputmultivar($name,MultiVarDataType::Time);
+        }
+
+        $this->closecol();
+        $this->closerow();
+    }
 	
 	function inputpassword($name, $description=NULL, $size=28, $value=""){
 		if($description==NULL)
@@ -404,7 +443,7 @@ class HTML
 	
 	function flaglist($name, $option, $selected=array(), $description=NULL)
 	{
-	// FAIRE LES MODIFICATION CAR MONTÉ EN BROCHE A FOIN
+	// FAIRE LES MODIFICATION CAR MONT? EN BROCHE A FOIN
 	if($description==NULL){
 			$description=$name;
 		}
@@ -442,7 +481,7 @@ class HTML
 		$this->closerow();
 	}
 	
-	function formsubmit($string='Exécuter'){
+	function formsubmit($string='Ex?cuter'){
 		$this->openrow();
 		$this->opencol("",2);
 		$this->addoutput($this->center("<input type=submit value=\"".$string."\"></form>"));

@@ -1,16 +1,16 @@
-<?
-// CHÉKER LE COMPORTEMENT QU'ON VEUT DONNER
-// LES PÉRIODES à venir pour la prochaine semaine?
-// Ou bin celle au début de la session???
+<?PHP
+// CH?KER LE COMPORTEMENT QU'ON VEUT DONNER
+// LES P?RIODES ? venir pour la prochaine semaine?
+// Ou bin celle au d?but de la session???
 
 
 
 if(isset($_POST['FORMIDPiscine'])){
 
-	if(!isset($_POST['FORMFrom5']))
+	if(!isset($_POST['MultiVar_From5']))
 		$Semaine = get_last_sunday();
 	else
-		$Semaine = get_last_sunday(0,mktime(0,0,0,$_POST['FORMFrom4'],$_POST['FORMFrom5'],$_POST['FORMFrom3']));
+		$Semaine = get_last_sunday(0,mktime(0,0,0,$_POST['MultiVar_From4'],$_POST['MultiVar_From5'],$_POST['MultiVar_From3']));
 	apply_multiplicateur(array('Semaine1'=>$Semaine,'Semaine2'=>$Semaine));
 	$VJour = array('0'=>'0','1'=>0,'2'=>0,'3'=>0,'4'=>0,'5'=>0,'6'=>0);
 	$Req ="SELECT IDPiscine, IDEmploye, ressource.Multiplicateur , Role, sum((End-Start)/3600) as Duree, Jour
@@ -20,13 +20,13 @@ if(isset($_POST['FORMIDPiscine'])){
 	WHERE Semaine = ".$Semaine." AND IDPiscine = ".$_POST['FORMIDPiscine']." AND IDEmploye<>0
 	GROUP BY Jour, Semaine, IDPiscine, Salaire, IDEmploye, Role
 	ORDER BY  IDEmploye ASC,  Role ASC, Salaire ASC, IDPiscine ASC, Semaine ASC,  Jour ASC";
-	//ok now this the real shit, première boucle pour les différentes piscines
+	//ok now this the real shit, premi?re boucle pour les diff?rentes piscines
 	$SQL->SELECT($Req);
 	$TimeSheet = array();
 	$OldIDEmploye="";
 	$OldRole="";
 	$OldSalaire="";
-	//création du vecteur de timesheet
+	//cr?ation du vecteur de timesheet
 	while($Rep = $SQL->FetchArray()){
 		if($OldIDEmploye<>$Rep['IDEmploye'] || $OldRole <> $Rep['Role']){
 			$TimeSheet[$Rep['IDEmploye']][$Rep['Role']]= $VJour;

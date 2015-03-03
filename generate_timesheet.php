@@ -24,14 +24,14 @@ GROUP BY Jour, Semaine, IDPiscine, Salaire, IDEmploye, Role
 ORDER BY  IDEmploye ASC,  Role ASC, Salaire ASC, IDPiscine ASC, Semaine ASC,  Jour ASC";
 
 
-//ok now this the real shit, première boucle pour les différentes piscines
+//ok now this the real shit, premi?re boucle pour les diff?rentes piscines
 $SQL->SELECT($Req);
 $TimeSheet = array();
 $OldIDEmploye="";
 $OldRole="";
 $OldSalaire="";
 $OldIDPiscine="";
-//création du vecteur de timesheet
+//cr?ation du vecteur de timesheet
 while($Rep = $SQL->FetchArray()){
 
 	if($OldIDEmploye<>$Rep['IDEmploye'] || $OldSalaire<>$Rep['Salaire'] || $OldRole <> $Rep['Role']){
@@ -52,7 +52,7 @@ while($Rep = $SQL->FetchArray()){
 		$Rep['Jour'] = $Rep['Jour']+7;
 	}
 	if($Rep['Duree']<1){
-		//checker si le moniteur travail déjà cette journée la
+		//checker si le moniteur travail d?j? cette journ?e la
 		$ReqW = "SELECT sum((end-start)/3600) as V FROM periode JOIN ressource on periode.IDPeriode=ressource.IDPeriode WHERE Semaine=".$Rep['Semaine']." AND Jour=".$JourR." AND IDEmploye = ".$Rep['IDEmploye']." AND IDPiscine=".$Rep['IDPiscine'];
 		$SQLW->SELECT($ReqW);
 		$RepW = $SQLW->FetchArray();
@@ -68,7 +68,7 @@ while($Rep = $SQL->FetchArray()){
 
 
 $Couple="";
-foreach($TimeSheet as $k1=>$v1){ //pour chaque employé
+foreach($TimeSheet as $k1=>$v1){ //pour chaque employ?
 	foreach($v1 as $k2=>$v2){ //pour chaque role
 		foreach($v2 as $k3=>$v3){ // pour chaque salaire
 			
