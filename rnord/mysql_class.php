@@ -1,17 +1,17 @@
 <?PHP
 //require_once"languages/".$setting['default_language']."/errors.php";
 ##########################################
-#        CETTE CLASSE SQL À ÉTÉ          #
-# PROGRAMMÉE PAR L'UNIQUE ET FANTASTIQUE #
+#        CETTE CLASSE SQL ï¿½ ï¿½Tï¿½          #
+# PROGRAMMï¿½E PAR L'UNIQUE ET FANTASTIQUE #
 #               CGUIMONT                 #
 #  UTILISATION PERMISE POUR QN           #
 ##########################################
 class SqlClass
 {
 	var $server = "localhost";
-	var $database = "qcnat_qndb";
-	var $username = "qcnat_cyberyder";
-	var $password = "chille";
+	var $database = "QNDB";
+	var $username = "root";
+	var $password = "chille69";
 	var $debug = 0;
 	var $show_errors = true;
 	var $logfile = "./mysql.log";
@@ -125,6 +125,16 @@ class SqlClass
 	{
 		return mysql_fetch_array($this->result);
 	}
+    ###########################################
+# Function:    FetchArray
+# Parameters:  N/A
+# Return Type: Array
+# Description: Make a Fetch into an Array
+###########################################
+    function FetchAssoc()
+    {
+        return mysql_fetch_assoc($this->result);
+    }
 ###########################################
 # Function:    FetchRow
 # Parameters:  N/A

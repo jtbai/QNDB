@@ -73,7 +73,7 @@ class HTML
 	function addpic($pic,$Property="",$link="",$target="")	{
 	$Txt = "<img src=\"".$pic."\" ".$Property.">";		
 	if($link<>"")
-		$this->addlink($link,$Txt,$taget);
+		$this->addlink($link,$Txt,$target);
 	if($link=="")
 		$this->addoutput($Txt);
 	}
@@ -231,6 +231,54 @@ class HTML
         $this->closecol();
         $this->closerow();
     }
+
+
+    function PreparePostData($Arg,$FormName="FORM"){
+        //Validate if multivar are presents
+        $ReturnArray = array();
+
+        foreach(array_filter(array_keys($Arg), function ($x) {return substr($x,0,12)=="MultiVarData";}) as $v){
+            $VariableName = $Arg[$v];
+            $VariableType = $Arg[$VariableName];
+
+            switch($VariableType){
+                case MultiVarDataType::PhoneNumber:{
+                    $ReturnArray[$VariableName] = $Arg['MultiVar_'.$VariableName.'1'].$Arg['MultiVar_'.$VariableName.'2'].$Arg['MultiVar_'.$VariableName.'3'];
+                    break;
+                }
+
+                case MultiVarDataType::Date:{
+                    $ReturnArray[$VariableName] = mktime(0,0,0,$Arg['MultiVar_'.$VariableName.'4'],$Arg['MultiVar_'.$VariableName.'5'],$Arg['MultiVar_'.$VariableName.'3']);
+                    break;
+                }
+
+
+                case MultiVarDataType::DateTime:{
+                    $ReturnArray[$VariableName] = mktime(0,0,0,$Arg['MultiVar_'.$VariableName.'4'],$Arg['MultiVar_'.$VariableName.'5'],$Arg['MultiVar_'.$VariableName.'3']);
+                    break;
+                }
+
+            }
+
+        }
+
+        //Convert multivar into single values
+        //Add them to return array
+        //Use Formname to loop on other elements
+        //Add them to return array
+        //return DataArray
+
+        foreach($Arg as $k => $v){
+            if(substr($k,0,strlen($FormName))==$FormName){
+                $ReturnArray[substr($k,strlen($FormName))] = $v;
+            }
+        }
+
+
+        return $ReturnArray;
+
+    }
+
 
     function inputtime($name, $description=NULL, $value=0, $val=array('Date'=>False,'Time'=>True)){
         if($value=="")
