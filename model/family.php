@@ -3,7 +3,7 @@
 class family extends baseModel{
 
     public function init(){
-        $this->DAL = array(
+        $this->Property = array(
             'IDFamily'=>0,
             'Name'=>'',
             'City'=>'Québec',
@@ -11,19 +11,9 @@ class family extends baseModel{
             'PostalCode'=>'',
             'Email'=>'',
             'Telephone'=>'',
-            'LastVisited'=>time()
+            'LastVisited'=>time(),
+            'Members'=>array()
         );
-        $this->FieldType = array(
-            'IDFamily'=>'Integer',
-            'Name'=>'String',
-            'City'=>'String',
-            'Address'=>'String',
-            'PostalCode'=>'String',
-            'Email'=>'String',
-            'Telephone'=>'String',
-            'LastVisited'=>'Integer'
-        );
-        $this->Property = array();
 
     }
 

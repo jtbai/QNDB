@@ -29,14 +29,16 @@ switch($Controller){
     CASE "family":{
         $ControllerInstance = new family_controller();
         BREAK;
-    BREAK;
     }
 
+    CASE "household":{
+        $ControllerInstance = new household_controller();
+        BREAK;
+    }
 
     CASE "Default":{
         $ControllerInstance = NULL;
         BREAK;
-    BREAK;
     }
 
 }

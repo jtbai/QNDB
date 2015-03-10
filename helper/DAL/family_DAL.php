@@ -3,8 +3,27 @@
 class family_DAL extends baseDAL{
 
     public function __construct(){
-        
 
+        $this->DAL_Field = array(
+            'IDFamily',
+            'Name',
+            'City',
+            'Address',
+            'PostalCode',
+            'Email',
+            'Telephone',
+            'LastVisited'
+        );
+        $this->DAL_FieldType = array(
+            'IDFamily'=>'Integer',
+            'Name'=>'String',
+            'City'=>'String',
+            'Address'=>'String',
+            'PostalCode'=>'String',
+            'Email'=>'String',
+            'Telephone'=>'String',
+            'LastVisited'=>'Integer'
+        );
     }
 
     function search_by_id($ID){

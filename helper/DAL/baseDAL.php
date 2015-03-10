@@ -2,8 +2,8 @@
 
 class baseDAL{
 
-    private $DAL_Field;
-    private $DAL_FieldType;
+    protected $DAL_Field;
+    protected $DAL_FieldType;
 
 
     function get_data_byID($ID,$Table){
@@ -63,12 +63,12 @@ class baseDAL{
         #DAL Field Values
         #Propery Field Values
 
-        $DAL_List = $Model->get_DAL_Fields();
+
         $Property_List =  $Model->get_Property_Fields();
 
         foreach($Data as $k=>$v){
 
-            if (in_array($k,$DAL_List) or in_array($k,$Property_List)){
+            if (in_array($k,$Property_List)){
                 $Model->$k = $v;
             }else{
                 trigger_error("No Such item (".$k.") in model:".$Class);
@@ -100,32 +100,30 @@ class baseDAL{
         #DAL Field Values
         #Propery Field Values
 
-        $DAL_Fields = $Model->get_DAL_Fields();
-        $DAL_FieldType = $Model->get_DAL_FieldType();
-
         $TableName = strtolower($Class);
         $FieldName = ucfirst($Class);
         $IDFieldName =  'ID'.$FieldName;
         $Statement = "Update ".$TableName." SET ";
 
-        foreach($DAL_Fields as $k){
+        foreach($this->DAL_Field as $k){
+
             $Statement .= "`".addslashes($k)."`=";
 
-            if(strtolower($DAL_FieldType[$k])=="string"){
+            if(strtolower($this->DAL_FieldType[$k])=="string"){
                 $Statement.= "'".addslashes(nl2br($Model->$k))."', ";
-            }elseif(strtolower($DAL_FieldType[$k])=="bool"){
+            }elseif(strtolower($this->DAL_FieldType[$k])=="bool"){
                 if($Model->$k){
                     $Statement.= "TRUE, ";
                 }else{
                     $Statement.= "FALSE, ";
                 }
 
-            }elseif(strtolower($DAL_FieldType[$k])=="integer"){
+            }elseif(strtolower($this->DAL_FieldType[$k])=="integer"){
                 $Statement.= intval($Model->$k).", ";
-            }elseif(strtolower($DAL_FieldType[$k])=="double"){
+            }elseif(strtolower($this->DAL_FieldType[$k])=="double"){
                 $Statement.= doubleval($Model->$k).", ";
             }else{
-                trigger_error($GLOBALS['UNKNOWN_DATATYPE'].": ".strtolower($DAL_FieldType[$k]));
+                trigger_error($GLOBALS['UNKNOWN_DATATYPE'].": ".strtolower($this->DAL_FieldType[$k]));
             }
 
 
@@ -144,8 +142,7 @@ class baseDAL{
         #DAL Field Values
         #Propery Field Values
 
-        $DAL_Fields = $Model->get_DAL_Fields();
-        $DAL_FieldType = $Model->get_DAL_FieldType();
+
 
         $TableName = strtolower($Class);
         $FieldName = ucfirst($Class);
@@ -155,25 +152,25 @@ class baseDAL{
         $Field = "";
         $Values = "";
 
-        foreach($DAL_Fields as $k){
+        foreach($this->DAL_Field as $k){
 
             $Field .= "`".addslashes($k)."`,";
 
-            if(strtolower($DAL_FieldType[$k])=="string"){
+            if(strtolower($this->DAL_FieldType[$k])=="string"){
                 $Values.= "'".addslashes(nl2br($Model->$k))."', ";
-            }elseif(strtolower($DAL_FieldType[$k])=="bool"){
+            }elseif(strtolower($this->DAL_FieldType[$k])=="bool"){
                 if($Model->$k){
                     $Values.= "TRUE, ";
                 }else{
                     $Values.= "FALSE, ";
                 }
 
-            }elseif(strtolower($DAL_FieldType[$k])=="integer"){
+            }elseif(strtolower($this->DAL_FieldType[$k])=="integer"){
                 $Values.= intval($Model->$k).", ";
-            }elseif(strtolower($DAL_FieldType[$k])=="double"){
+            }elseif(strtolower($this->DAL_FieldType[$k])=="double"){
                 $Values.= doubleval($Model->$k).", ";
             }else{
-                trigger_error($GLOBALS['UNKNOWN_DATATYPE'].": ".strtolower($DAL_FieldType[$k]));
+                trigger_error($GLOBALS['UNKNOWN_DATATYPE'].": ".strtolower($this->DAL_FieldType[$k]));
             }
 
         }
