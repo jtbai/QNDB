@@ -11,8 +11,8 @@ include('func_employe.php');
 include('func_paye.php');
 //
 //Inclusion of MVC model
-include_once('helper/DataFunction.php');
-include_once('model/family.php');
+#include_once('helper/DataFunction.php');
+#include_once('model/family.php');
 //print_r($_REQUEST);
 if(isset($_POST['FORMCIE'])){
 	
