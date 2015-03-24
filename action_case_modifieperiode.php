@@ -8,20 +8,19 @@ $SQL2 = new sqlclass();
 $PeriodeIniInfo = get_info('periode',$_POST['IDPeriode']);
 $StartIni = $PeriodeIniInfo['Start'];
 $EndIni = $PeriodeIniInfo['End'];
-
-if($_POST['FORMEndTime1']=="")
-	$_POST['FORMEndTime1']=0;
-if($_POST['FORMStartTime1']=="")
-	$_POST['FORMStartTime1']=0;
+if($_POST['MultiVar_EndTime1']=="")
+	$_POST['MultiVar_EndTime1']=0;
+if($_POST['MultiVar_StartTime1']=="")
+	$_POST['MultiVar_StartTime1']=0;
 
 $ACT = "";
-if($_POST['FORMEndTime2']=="" or $_POST['FORMEndTime2']==0 OR $_POST['FORMStartTime2']==0 OR $_POST['FORMStartTime2']==""){
+if($_POST['MultiVar_EndTime2']=="" or $_POST['MultiVar_EndTime2']==0 OR $_POST['MultiVar_StartTime2']==0 OR $_POST['MultiVar_StartTime2']==""){
 	//cas o� il manque soit l'heure de d�but et/ou de fin
 	$ACT = "DELETE";
 }else{
 	//on cheke les overlap
-	$NStart = 60*$_POST['FORMStartTime1']+$_POST['FORMStartTime2']*3600;
-	$NEnd = 60*$_POST['FORMEndTime1']  +$_POST['FORMEndTime2']*3600;
+	$NStart = 60*$_POST['MultiVar_StartTime1']+$_POST['MultiVar_StartTime2']*3600;
+	$NEnd = 60*$_POST['MultiVar_EndTime1']  +$_POST['MultiVar_EndTime2']*3600;
 	$Req = "SELECT IDPeriode FROM periode WHERE ((Start>=".$NStart." AND End<=".$PeriodeIniInfo['Start'].") OR (End<=".$NEnd." AND Start>=".$PeriodeIniInfo['End'].")) AND Jour=".$PeriodeIniInfo['Jour']." AND IDPiscine=".$PeriodeIniInfo['IDPiscine']." AND IDSession=".$PeriodeIniInfo['IDSession'];
 	$SQL->SELECT($Req);
 	if($SQL->NumRow()==0)
