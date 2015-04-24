@@ -14,7 +14,7 @@ if($family->IDFamily<>0){
 
 $MainOutput->OpenRow();
 $MainOutput->OpenCol('100%',2);
-	$MainOutput->addtexte('----------Personnel------------------------------','Titre');
+$MainOutput->addtexte('----------Personnel------------------------------','Titre');
 $MainOutput->CloseCol();
 $MainOutput->CloseRow();
 
