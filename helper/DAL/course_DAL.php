@@ -36,7 +36,7 @@ class course_DAL extends baseDAL{
 
     function save($Model){
         $this->myCourse = $Model;
-        $this->base_save("Course",$Model);
+        $this->base_save("Cours",$Model);
     }
 
 }

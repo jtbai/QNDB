@@ -39,7 +39,7 @@ class period_DAL extends baseDAL{
     }
 
     function save($Model){
-        $this->base_save("Period",$Model);
+        $this->base_save("Periode",$Model);
     }
 
 }

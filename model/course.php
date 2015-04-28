@@ -8,11 +8,29 @@ class course extends baseModel{
             'IDPeriode'=>0,
             'IDNiveau'=>0,
             'Multiplicateur'=>0,
-            'Periode'=>new period
-            #'Niveau'=>new niveau
+            'Period'=>new period,
+            'Level'=>new level
         );
 
     }
+
+
+    public function __set($Var,$Value){
+
+        if($Var=="Period"){
+            $this->Property['Period'] = $Value;
+            $this->Property['IDPeriode'] = $this->Property['Period']->IDPeriode;
+        }elseif($Var=="Level"){
+            $this->Property['Level'] = $Value;
+            $this->Property['IDNiveau'] = $this->Property['Level']->IDNiveau;
+        }
+        {
+            parent::__set($Var,$Value);
+        }
+
+    }
+
+
 
     public function __construct($Args=NULL){
         $this->init();
