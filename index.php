@@ -1,6 +1,9 @@
 <?PHP
+ini_set("display_errors", TRUE);
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
 //include de cookie et de fonctions
 include('func_info.php');
+
 include('func_horaire.php');
 include('func_niveau.php');
 include('func_plan.php');
@@ -11,8 +14,7 @@ include('func_employe.php');
 include('func_paye.php');
 //
 //Inclusion of MVC model
-#include_once('helper/DataFunction.php');
-#include_once('model/family.php');
+include('./mvc_loader.php');
 //print_r($_REQUEST);
 if(isset($_POST['FORMCIE'])){
 	
@@ -110,6 +112,7 @@ if(!isset($_COOKIE['IDEmploye']))
 	}
 	?>
 	<td width=600 valign=TOP><?PHP
+
 
 	 include('section.php') ?></td>
 </tr>
