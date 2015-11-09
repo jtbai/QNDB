@@ -7,6 +7,14 @@ if(!isset($_GET['Semaine']))
 
 $SemD = get_date($_GET['Semaine']);
 $SemE = get_date($_GET['Semaine'] + 6*(86400));
+
+$Dates = array();
+$CurrentDate = $_GET['Semaine'];
+for($i=0;$i<=6;$i++){
+    $Dates[$i] = $CurrentDate;
+    $CurrentDate += get_day_length($CurrentDate);
+}
+
 $Month = get_month_list('court');
 	
 $Time = $SemD;
@@ -100,7 +108,7 @@ while($Rep = $SQL->FetchArray()){
 			
 			$CJour = array(0=>'Dimanche',1=>'Lundi',2=>'Mardi',3=>'Mercredi',4=>'Jeudi',5=>'Vendredi',6=>'Samedi');
 			$MainOutput->addtexte("<div align=center>".$CJour[$d]."</div>", 'Titre');
-			$Date = get_date($_GET['Semaine']+$d*86400);
+            $Date = get_date($Dates[$d]);
 			$MainOutput->addtexte("<div align=center>".$Date['d']."-".$Month[intval($Date['m'])]."</div>", 'Titre');
 			$MDay[$d] = $Date['d']."-".$Month[intval($Date['m'])];
 			
@@ -179,7 +187,7 @@ $PiscineInfo = get_info('piscine',$OldIDPiscine);
 			
 			$CJour = array(0=>'Dimanche',1=>'Lundi',2=>'Mardi',3=>'Mercredi',4=>'Jeudi',5=>'Vendredi',6=>'Samedi');
 			$MainOutput->addtexte("<div align=center>".$CJour[$d]."</div>", 'Titre');
-			$Date = get_date($_GET['Semaine']+$d*86400);
+            $Date = get_date($Dates[$d]);
 			$MainOutput->addtexte("<div align=center>".$Date['d']."-".$Month[intval($Date['m'])]."</div>", 'Titre');
 			$MDay[$d] = $Date['d']."-".$Month[intval($Date['m'])];
 			
@@ -207,7 +215,7 @@ $PiscineInfo = get_info('piscine',$OldIDPiscine);
 			$MainOutput->AddPic('carlos.gif','width=125, height=1');
 			$CJour = array(0=>'Dimanche',1=>'Lundi',2=>'Mardi',3=>'Mercredi',4=>'Jeudi',5=>'Vendredi',6=>'Samedi');
 			$MainOutput->addtexte("<div align=center>".$CJour[$d]."</div>", 'Titre');
-			$Date = get_date($_GET['Semaine']+$d*86400);
+            $Date = get_date($Dates[$d]);
 			$MainOutput->addtexte("<div align=center>".$Date['d']."-".$Month[intval($Date['m'])]."</div>", 'Titre');
 			$MDay[$d] = $Date['d']."-".$Month[intval($Date['m'])];
 			$MainOutput->CloseCol();	
