@@ -1,0 +1,11 @@
+CREATE TABLE `family` (
+  `IDFamily` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(45) DEFAULT NULL,
+  `Address` varchar(45) DEFAULT NULL,
+  `City` varchar(45) DEFAULT NULL,
+  `PostalCode` varchar(45) DEFAULT NULL,
+  `Telephone` varchar(45) DEFAULT NULL,
+  `Email` varchar(45) DEFAULT NULL,
+  `LastVisited` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`IDFamily`)
+) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=latin1;
