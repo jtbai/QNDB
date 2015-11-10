@@ -4,7 +4,6 @@ class baseModel{
 
     protected $Property; //Model's properties
 
-
     public function __get($Var){
 
         if (isset($this->Property)){

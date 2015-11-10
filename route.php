@@ -11,7 +11,7 @@ if (isset($_POST['Controller'])) {
     if (isset($_GET['Action']))
         $Action = $_GET['Action'];
     else
-        $Action = "GET";
+        $Action = "INDEX";
 } else {
     $Controller = "Default";
     $Action = "INDEX";
@@ -58,6 +58,11 @@ if (!is_null($ControllerInstance)) {
 
         CASE "GET": {
             $ControllerInstance->GET($ID);
+            BREAK;
+        }
+
+        CASE "EDIT": {
+            $ControllerInstance->EDIT($ID);
             BREAK;
         }
 

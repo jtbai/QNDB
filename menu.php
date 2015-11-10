@@ -48,7 +48,7 @@ if (isset($_COOKIE['Status']) AND $_COOKIE['Status'] == "Bureau") {
     $MenuOutput->AddTexte('Gestion des inscriptions', 'Titre');
     $MenuOutput->br();
     $MenuOutput->AddPic('images/cat.png');
-    $MenuOutput->AddLink('index.php?Controller=family&Action=CREATE', 'Gestion des familles');
+    $MenuOutput->AddLink('index.php?Controller=family', 'Gestion des familles');
 
     $MenuOutput->br(2);
     $MenuOutput->AddTexte('Feuille de temps', 'Titre');
