@@ -90,6 +90,9 @@ class baseDAL{
 
         $SQL->Query($Query);
 
+        #Ca serait bien que le ID s'update automatiquement...
+        $Model->$ID = $this->get_last_id(ucfirst($Class));
+
     }
 
     Function GenerateUpdateStatement($Class, $Model){

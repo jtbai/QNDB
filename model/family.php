@@ -6,7 +6,7 @@ class family extends baseModel{
         $this->Property = array(
             'IDFamily'=>0,
             'Name'=>'',
-            'City'=>'QuÃ©bec',
+            'City'=>'Québec',
             'Address'=>'',
             'PostalCode'=>'',
             'Email'=>'',

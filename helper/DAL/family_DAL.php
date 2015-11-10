@@ -43,5 +43,3 @@ class family_DAL extends baseDAL{
     }
 
 }
-
-?>

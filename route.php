@@ -14,7 +14,7 @@ if (isset($_POST['Controller'])) {
         $Action = "GET";
 } else {
     $Controller = "Default";
-    $Action = "GET";
+    $Action = "INDEX";
 }
 
 if (isset($_GET['ID'])) {
@@ -46,6 +46,16 @@ switch ($Controller) {
 if (!is_null($ControllerInstance)) {
     switch ($Action) {
 
+        CASE "CREATE": {
+            $ControllerInstance->CREATE($ID);
+            BREAK;
+        }
+
+        CASE "INDEX": {
+            $ControllerInstance->INDEX($ID);
+            BREAK;
+        }
+
         CASE "GET": {
             $ControllerInstance->GET($ID);
             BREAK;
@@ -60,5 +70,7 @@ if (!is_null($ControllerInstance)) {
             $ControllerInstance->PUT(HTML::PreparePostData($_POST, 'FORM'));
             BREAK;
         }
+
+
     }
 }
