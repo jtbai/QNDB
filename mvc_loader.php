@@ -1,5 +1,5 @@
 <?PHP
-include('route.php');
+
 foreach (glob("helper/DAL/*.php") as $filename) {
     include $filename;
 }
@@ -11,6 +11,7 @@ foreach (glob("model/*.php") as $filename) {
     include $filename;
 }
 
-foreach (glob("view/*.php") as $filename) {
+foreach (glob("controller/*.php") as $filename) {
     include $filename;
 }
+
