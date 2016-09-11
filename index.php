@@ -19,14 +19,16 @@ if (isset($_POST['FORMCIE'])) {
     if ($_POST['FORMCIE'] == "RNORD")
         include('rnord/mysql_class.php');
     if ($_POST['FORMCIE'] == "RSUD")
-        include('rsud/mysql_class.php');
+        die("No acces granted for Qc Nat Rive-Sud");
+        //include('rsud/mysql_class.php');
     $SQL = New SqlClass;
 } elseif (isset($_COOKIE['Cie'])) {
 
     if ($_COOKIE['Cie'] == "RNORD")
         include('rnord/mysql_class.php');
     if ($_COOKIE['Cie'] == "RSUD")
-        include('rsud/mysql_class.php');
+        die("No acces granted for Qc Nat Rive-Sud");
+        //include('rsud/mysql_class.php');
     $SQL = New SqlClass;
     $AS = get_active('session', 1, 'IDSession');
     foreach ($AS as $v)
