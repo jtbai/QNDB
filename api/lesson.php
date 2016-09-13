@@ -80,7 +80,6 @@ foreach ($output as $IDCours => $Items) {
 
     unset($output[$IDCours]['IDPiscine']);
     unset($output[$IDCours]['IDPeriode']);
-
 }
-print(json_encode($output,JSON_PRETTY_PRINT));
+print(json_encode($output));
 
