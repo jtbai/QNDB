@@ -43,6 +43,3 @@ class period_DAL extends baseDAL{
     }
 
 }
-
-?>
-
