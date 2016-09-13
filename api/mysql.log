@@ -1,0 +1,2 @@
+[SELECT min(IDPeriode) as IDPeriode, IDPiscine, Jour, Start, IDCours FROM periode JOIN cours on cours.IDPeriode = periode.IDPeriode WHERE IDSession = 54 GROUP BY IDPiscine, Jour, Start][Column 'IDPeriode' in field list is ambiguous][][12/09/2016 21:40:38]
+[SELECT min(IDPeriode) as IDPeriode, IDPiscine, Jour, Start, IDCours FROM periode JOIN cours on cours.IDPeriode = periode.IDPeriode WHERE IDSession = 54 GROUP BY IDPiscine, Jour, Start][Column 'IDPeriode' in field list is ambiguous][][12/09/2016 21:40:57]
