@@ -52,6 +52,9 @@ while ($rep = $sql->FetchArray()) {
 }
 
 foreach ($output as $IDCours => $Items) {
+    //Session identificateur
+    $output[$IDCours]['Saison'] = $current_session_id_saison.substr($current_session_id_Annee,-2);
+
     // Piscine Name
     $req = "SELECT Nom FROM piscine WHERE IDPiscine =" . $Items['IDPiscine'];
     $sql->query($req);
