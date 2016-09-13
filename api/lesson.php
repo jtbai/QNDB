@@ -14,7 +14,7 @@ while($rep = $sql->FetchArray()){
 #Getting all lessons
 
 
-$output = [];
+$output = array();
 
 $req = "SELECT min(IDPeriode) as IDPeriode, IDPiscine, Jour, Start FROM periode GROUPED BY IDPiscine, Jour, Start WHERE IDSession = ".$current_session_id;
 $sql->query($req);
