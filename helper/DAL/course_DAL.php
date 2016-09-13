@@ -40,6 +40,3 @@ class course_DAL extends baseDAL{
     }
 
 }
-
-?>
-
