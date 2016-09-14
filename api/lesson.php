@@ -2,7 +2,7 @@
 include('../rnord/mysql_class.php');
 include('../func_date.php');
 $sql = new SqlClass();
-
+$sql2 = new SqlClass();
 function wd_remove_accents($str, $charset = '')
 {
     $str = htmlentities($str, ENT_NOQUOTES, $charset);
@@ -38,7 +38,7 @@ while ($rep = $sql->FetchArray()) {
 
 $output = array();
 
-$req = "SELECT min(periode.IDPeriode) as IDPeriode, IDPiscine, Jour, Start, IDCours FROM periode JOIN cours on cours.IDPeriode = periode.IDPeriode WHERE IDSession = " . $current_session_id . " GROUP BY IDPiscine, Jour, Start";
+$req = "SELECT periode.IDPeriode as IDPeriode, IDPiscine, Jour, Start FROM periode WHERE IDSession = " . $current_session_id . " GROUP BY IDPiscine, Jour, Start";
 $sql->query($req);
 
 while ($rep = $sql->FetchArray()) {
@@ -47,8 +47,11 @@ while ($rep = $sql->FetchArray()) {
     if ($date["i"] != 0) {
         $date_string .= $date["i"];
     }
-
-    $output[$rep['IDCours']] = array('IDPeriode' => $rep['IDPeriode'], 'IDPiscine' => $rep['IDPiscine'], 'day' => $days[$rep['Jour']], 'time' => $date_string);
+    $req_2 = "SELECT IDCours FROM cours WHERE IDPeriode =".$rep['IDPeriode'];
+    $sql2->query($req_2);
+    while($rep_2 = $sql2->FetchArray()){
+        $output[$rep_2['IDCours']] = array('IDPeriode' => $rep['IDPeriode'], 'IDPiscine' => $rep['IDPiscine'], 'day' => $days[$rep['Jour']], 'time' => $date_string);
+    }
 }
 
 foreach ($output as $IDCours => $Items) {
