@@ -69,7 +69,7 @@ foreach ($output as $IDCours => $Items) {
     $sql->query($req);
 
     while ($rep = $sql->FetchArray()) {
-        $output[$IDCours]['monitor'] = wd_remove_accents($rep['Prenom']) . " " . wd_remove_accents($rep['Nom']);
+        $output[$IDCours]['instructor'] = wd_remove_accents($rep['Prenom']) . " " . wd_remove_accents($rep['Nom']);
     }
 
     //Niveau
