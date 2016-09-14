@@ -48,19 +48,19 @@ while ($rep = $sql->FetchArray()) {
         $date_string .= $date["i"];
     }
 
-    $output[$rep['IDCours']] = array('IDPeriode' => $rep['IDPeriode'], 'IDPiscine' => $rep['IDPiscine'], 'Day' => $days[$rep['Jour']], 'Time' => $date_string);
+    $output[$rep['IDCours']] = array('IDPeriode' => $rep['IDPeriode'], 'IDPiscine' => $rep['IDPiscine'], 'day' => $days[$rep['Jour']], 'time' => $date_string);
 }
 
 foreach ($output as $IDCours => $Items) {
     //Session identificateur
-    $output[$IDCours]['Saison'] = $current_session_id_saison.substr($current_session_id_Annee,-2);
+    $output[$IDCours]['session'] = $current_session_id_saison.substr($current_session_id_Annee,-2);
 
     // Piscine Name
     $req = "SELECT Nom FROM piscine WHERE IDPiscine =" . $Items['IDPiscine'];
     $sql->query($req);
 
     while ($rep = $sql->FetchArray()) {
-        $output[$IDCours]['Pool'] = wd_remove_accents($rep['Nom']);
+        $output[$IDCours]['pool'] = wd_remove_accents($rep['Nom']);
     }
 
     // Moniteur
@@ -69,7 +69,7 @@ foreach ($output as $IDCours => $Items) {
     $sql->query($req);
 
     while ($rep = $sql->FetchArray()) {
-        $output[$IDCours]['Monitor'] = wd_remove_accents($rep['Prenom']) . " " . wd_remove_accents($rep['Nom']);
+        $output[$IDCours]['monitor'] = wd_remove_accents($rep['Prenom']) . " " . wd_remove_accents($rep['Nom']);
     }
 
     //Niveau
@@ -78,7 +78,7 @@ foreach ($output as $IDCours => $Items) {
     $sql->query($req);
 
     while ($rep = $sql->FetchArray()) {
-        $output[$IDCours]['Level'] = wd_remove_accents($rep['Niveau']);
+        $output[$IDCours]['level'] = wd_remove_accents($rep['Niveau']);
     }
 
     unset($output[$IDCours]['IDPiscine']);
