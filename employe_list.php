@@ -53,7 +53,7 @@ $MainOutput->Addlink('index.php?Section=EmployeList&Session=','Pas rejoinds');
 $MainOutput->Addtexte(' - ');
 $MainOutput->Addlink('index.php?Section=EmployeList&Session=%','Tous');
 $MainOutput->Addtexte(' - ');
-$MainOutput->Addlink('index.php?Section=EmployeList&Cessation=1','Cessationnés');
+$MainOutput->Addlink('index.php?Section=EmployeList&Cessation=1','Cessationnï¿½s');
 
 
 $MainOutput->CloseCol();
@@ -78,12 +78,12 @@ $MainOutput->AddPic('carlos.gif','width=100 height=1');
 $MainOutput->CloseCol();
 
 $MainOutput->OpenCol();
-$MainOutput->addlink('index.php?Section=EmployeList&Session='.$_GET['Session'].'&Field=Prenom&Order='.$Unorder.'&Cessation='.$_GET['Cessation'],'Prénom');
+$MainOutput->addlink('index.php?Section=EmployeList&Session='.$_GET['Session'].'&Field=Prenom&Order='.$Unorder.'&Cessation='.$_GET['Cessation'],'Prï¿½nom');
 $MainOutput->AddPic('carlos.gif','width=100 height=1');
 $MainOutput->CloseCol();
 
 $MainOutput->OpenCol();
-$MainOutput->addlink('index.php?Section=EmployeList&Session='.$_GET['Session'].'&Field=TelP&Order='.$Unorder.'&Cessation='.$_GET['Cessation'],'Teléphone');
+$MainOutput->addlink('index.php?Section=EmployeList&Session='.$_GET['Session'].'&Field=TelP&Order='.$Unorder.'&Cessation='.$_GET['Cessation'],'Telï¿½phone');
 $MainOutput->AddPic('carlos.gif','width=100 height=1');
 $MainOutput->CloseCol();
 
@@ -183,12 +183,12 @@ if(!$_GET['ToPrint']){
 		$Date = mktime(0,0,0,$Now['mon'],1,$Now['year']);
 		if($Rep['Expiration']<$Date)
 			$Class='Warning';
-		
+
 		if($New){
-			$Qualif .= ":<span class=".$Class."> ".$Rep[0]."</span>";			
+			$Qualif .= "<span class=".$Class."><a title=\"Expiration: ".date("d-m-Y",$Rep['Expiration'])."\">: ".$Rep[0]."</a></span>";
 			$New=FALSE;
 		}else{
-			$Qualif = $Qualif."<span class=Texte> - </span><span class=".$Class.">".$Rep[0]."</span>";
+			$Qualif = $Qualif."<span class=Texte> - </span><span class=".$Class."><a title=\"Expiration: ".date("d-m-Y",$Rep['Expiration'])."\">".$Rep[0]."</a></span>";
 		}
 	}
 	
