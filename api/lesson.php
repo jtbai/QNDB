@@ -5,7 +5,7 @@ $sql = new SqlClass();
 $sql2 = new SqlClass();
 function wd_remove_accents($str, $charset = '')
 {
-    $str = htmlentities($str, ENT_NOQUOTES, $charset);
+    $str = htmlentities($str, ENT_NOQUOTES, 'iso-8859-1');
 
     $str = preg_replace('#&([A-za-z])(?:acute|cedil|caron|circ|grave|orn|ring|slash|th|tilde|uml);#', '\1', $str);
     $str = preg_replace('#&([A-za-z]{2})(?:lig);#', '\1', $str); // pour les ligatures e.g. '&oelig;'
