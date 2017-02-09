@@ -1,6 +1,6 @@
 <?PHP
-ini_set("display_errors", TRUE);
-error_reporting(E_ERROR | E_WARNING | E_PARSE);
+//ini_set("display_errors", TRUE);
+//error_reporting(E_ERROR | E_WARNING | E_PARSE);
 //include de cookie et de fonctions
 include('func_info.php');
 include('func_horaire.php');
