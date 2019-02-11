@@ -1,7 +1,9 @@
 <?PHP
 ini_set("display_errors", TRUE);
+setlocale("LC_ALL","fr_CA");
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 //include de cookie et de fonctions
+;
 include('func_info.php');
 include('func_horaire.php');
 include('func_niveau.php');
@@ -40,9 +42,10 @@ include('class_html.php');
 //Inclusion of MVC model
 include('./mvc_loader.php');
 
-$MainOutput = New HTML;
-$WarnOutput = New HTML;
-$MenuOutput = New HTML;
+$MainOutput = New HTML();
+$WarnOutput = New HTML();
+$MessageOutput = New HTML();
+$MenuOutput = New HTML();
 if (isset($_GET['ToPrint']) AND $_GET['ToPrint'] == "TRUE") {
     $ToPrint = TRUE;
 } else {
@@ -111,6 +114,7 @@ if (!isset($_COOKIE['IDEmploye']))
         }
         ?>
         <td width=600 valign=TOP><?PHP
+            echo $MessageOutput->send(1);
           include('section.php');
           include('route.php');
 
