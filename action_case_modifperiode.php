@@ -8,7 +8,7 @@ foreach($_POST['FORMIDPiscine'] as $k=>$v){
 	$SQL->SELECT($Req);
     $piscine_name_req = "SELECT nom FROM piscine where IDPiscine=".$k;
 	$SQL2->Select($piscine_name_req);
-    $nom_pisince_rep = $SQL2->FetchAssoc();
+    $nom_pisince_rep = $SQL2->FetchArray();
     $nom_piscine = $nom_pisince_rep['nom'];
 	while($Rep = $SQL->FetchArray()){
 		$Req2 = "SELECT max(Semaine) as last_week FROM periode WHERE Jour=".$Rep['Jour']." AND Start=".$Rep['Start']." AND IDPiscine = ".$k;
