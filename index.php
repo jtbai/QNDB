@@ -1,6 +1,6 @@
 <?PHP
 ini_set("display_errors", TRUE);
-setlocale("LC_ALL","fr_CA");
+setlocale("LC_TIME","fr_CA");
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 //include de cookie et de fonctions
 ;
