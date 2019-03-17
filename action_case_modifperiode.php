@@ -4,14 +4,14 @@ $SD = mktime(0,0,0,$_POST['MultiVar_START4'],$_POST['MultiVar_START5'],$_POST['M
 $ED = mktime(0,0,0,$_POST['MultiVar_END4'],$_POST['MultiVar_END5'],$_POST['MultiVar_END3']) +24*3600;
 $MessageOutput->addtexte("Shift modifies<br>", "Titre");
 foreach($_POST['FORMIDPiscine'] as $k=>$v){
-    $Req = "SELECT DISTINCT IDPeriode, Semaine, Jour, Start FROM periode WHERE IDPiscine=$k and Semaine+Jour*(60*60*24)+Start >".$SD." AND Semaine+(Jour)*(60*60*24)+Start <".$ED." GROUP BY Semaine, Jour, Start ORDER BY Semaine ASC, Jour ASC, Start ASC";
+    $Req = "SELECT DISTINCT IDPeriode, Semaine, Jour, Start, IDSession FROM periode WHERE IDPiscine=$k and Semaine+Jour*(60*60*24)+Start >".$SD." AND Semaine+(Jour)*(60*60*24)+Start <".$ED." GROUP BY Semaine, Jour, Start ORDER BY Semaine ASC, Jour ASC, Start ASC";
 	$SQL->SELECT($Req);
     $piscine_name_req = "SELECT nom FROM piscine where IDPiscine=".$k;
 	$SQL2->Select($piscine_name_req);
     $nom_pisince_rep = $SQL2->FetchArray();
     $nom_piscine = $nom_pisince_rep['nom'];
 	while($Rep = $SQL->FetchArray()){
-		$Req2 = "SELECT max(Semaine) as last_week FROM periode WHERE Jour=".$Rep['Jour']." AND Start=".$Rep['Start']." AND IDPiscine = ".$k;
+		$Req2 = "SELECT max(Semaine) as last_week FROM periode WHERE Jour=".$Rep['Jour']." AND Start=".$Rep['Start']." AND IDPiscine = ".$k." AND  IDSession= ".$Rep['IDSession'] ;
 		$SQL2->SELECT($Req2);
 		$Rep2 = $SQL2->FetchArray();
 
@@ -39,7 +39,6 @@ foreach($_POST['FORMIDPiscine'] as $k=>$v){
 		$SQL2->UPDATE($Req2);
 	}
 }
-
 
 $_GET['Section'] = "Periode"
 ?>
