@@ -11,17 +11,20 @@ if(isset($_POST['FORMIDPiscine'])){
 		$Semaine = get_last_sunday();
 	else
 		$Semaine = get_last_sunday(0,mktime(0,0,0,$_POST['MultiVar_From4'],$_POST['MultiVar_From5'],$_POST['MultiVar_From3']));
+
+    $sql_semaine_statement_for_dls = generate_sql_extended_semaine_query($Semaine);
 	apply_multiplicateur(array('Semaine1'=>$Semaine,'Semaine2'=>$Semaine));
 	$VJour = array('0'=>'0','1'=>0,'2'=>0,'3'=>0,'4'=>0,'5'=>0,'6'=>0);
 	$Req ="SELECT IDPiscine, IDEmploye, ressource.Multiplicateur , Role, sum((End-Start)/3600) as Duree, Jour
 	FROM 
 	ressource JOIN periode
 	ON ressource.IDPeriode=periode.IDPeriode 
-	WHERE Semaine = ".$Semaine." AND IDPiscine = ".$_POST['FORMIDPiscine']." AND IDEmploye<>0
+	WHERE ".$sql_semaine_statement_for_dls." AND IDPiscine = ".$_POST['FORMIDPiscine']." AND IDEmploye<>0
 	GROUP BY Jour, Semaine, IDPiscine, Salaire, IDEmploye, Role
 	ORDER BY  IDEmploye ASC,  Role ASC, Salaire ASC, IDPiscine ASC, Semaine ASC,  Jour ASC";
 	//ok now this the real shit, premi?re boucle pour les diff?rentes piscines
-	$SQL->SELECT($Req);
+	print($Req);
+    $SQL->SELECT($Req);
 	$TimeSheet = array();
 	$OldIDEmploye="";
 	$OldRole="";

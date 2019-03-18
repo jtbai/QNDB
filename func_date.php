@@ -53,6 +53,43 @@ $TimeToReturn = $ProjectedTime - ( $InitialSecond + 60 * ($InitialMinute + 60 * 
   	
 }
 
+function generate_sql_extended_semaine_query($semaine){
+	# This is a 100% Patch,
+	# Daylight Saving (DLS) is problematic across the software and
+	# Semaine Variable sometime is with or without DLS, and session where there is an hour change,
+	# everything fucks up. This request is intended to search for semaine + or - one hour
+	# of the initial semaine variable passed. This is heavy MYSQL syntax but yeah.
+
+	$hour_duration = 60*60;
+	$lower_end = $semaine - $hour_duration;
+	$upper_end = $semaine + $hour_duration;
+	$sql_statement = "Semaine IN (".$lower_end.",".$upper_end.")";
+
+	return $sql_statement;
+}
+
+
+function generate_reverse_index_for_semaine_extended_query($semaine_array){
+	# This is the reverse function of the generate_sql_extended_semaine_query
+	# This reverse index allows to know which "real" semaine is associated to a
+	# semaine found in the database. This function is mostly useful
+	# When there is a request that handles more than one "extended week" such as
+	# the pay generation script.
+	# This function is using a semaine array to reflects this purpose.
+	$hour_duration = 60*60;
+	$reverse_index = array();
+	foreach($semaine_array as $semaine){
+		$lower_end = $semaine - $hour_duration;
+		$upper_end = $semaine + $hour_duration;
+
+		$reverse_index[$lower_end] = $semaine;
+		$reverse_index[$semaine] = $semaine;
+		$reverse_index[$upper_end] = $semaine;
+	}
+
+	return $reverse_index;
+}
+
 function get_age($Time){
 	if($Time==0){
 		return "N/A";
@@ -124,9 +161,9 @@ function get_date($Time){
 
 function get_month_list($Len = "long"){
 	if($Len<>"court"){
-		return array(1=>'Janvier',2=>'Février',3=>'Mars',4=>'Avril',5=>'Mai',6=>'Juin',7=>'Juillet',8=>'Août',9=>'Septembre',10=>'Octobre',11=>'Novembre',12=>'Décembre');
+		return array(1=>'Janvier',2=>'Fï¿½vrier',3=>'Mars',4=>'Avril',5=>'Mai',6=>'Juin',7=>'Juillet',8=>'Aoï¿½t',9=>'Septembre',10=>'Octobre',11=>'Novembre',12=>'Dï¿½cembre');
 	}
-	return array(1=>'Janv',2=>'Fév',3=>'Mars',4=>'Avr',5=>'Mai',6=>'Juin',7=>'Juil',8=>'Août',9=>'Sept',10=>'Oct',11=>'Nov',12=>'Déc');
+	return array(1=>'Janv',2=>'Fï¿½v',3=>'Mars',4=>'Avr',5=>'Mai',6=>'Juin',7=>'Juil',8=>'Aoï¿½t',9=>'Sept',10=>'Oct',11=>'Nov',12=>'Dï¿½c');
 }
 function get_day_list($Len = "Long"){
 	if($Len<>"court"){

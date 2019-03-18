@@ -170,7 +170,7 @@ if(isset($_COOKIE['Status']) AND $_COOKIE['Status']=="Bureau"){
 			if(WriteAccess())
 				include('action_case_modifperiode.php');
 			else
-				$WarnOutput->addtexte("Il n'est pas possible de modifier les p?riodes: vous n'avec pas les droits en ?criture sur cette session",'warning');
+				$WarnOutput->addtexte("Il n'est pas possible de modifier les périodes: vous n'avec pas les droits en écriture sur cette session",'warning');
 			BREAK;
 		}
 		
@@ -180,7 +180,7 @@ if(isset($_COOKIE['Status']) AND $_COOKIE['Status']=="Bureau"){
 			if(WriteAccess())
 				include('action_case_modifieperiode.php');
 			else
-				$WarnOutput->addtexte("Il n'est pas possible de modifier les p?riodes: vous n'avec pas les droits en ?criture sur cette session",'warning');
+				$WarnOutput->addtexte("Il n'est pas possible de modifier les périodes: vous n'avec pas les droits en écriture sur cette session",'warning');
 		
 			BREAK;
 		}
@@ -191,7 +191,7 @@ if(isset($_COOKIE['Status']) AND $_COOKIE['Status']=="Bureau"){
 			if(WriteAccess())
 				include('action_case_addperiode.php');
 			else
-				$WarnOutput->addtexte("Il n'est pas possible d'ajouter de p?riode: vous n'avec pas les droits en ?criture sur cette session",'warning');
+				$WarnOutput->addtexte("Il n'est pas possible d'ajouter de p?riode: vous n'avec pas les droits en écriture sur cette session",'warning');
 		
 		BREAK;
 		}

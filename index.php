@@ -1,4 +1,5 @@
 <?PHP
+ini_set("default_charset", "iso-8859-1");
 ini_set("display_errors", TRUE);
 setlocale("LC_TIME","fr_CA");
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
@@ -68,7 +69,7 @@ if (isset($_POST['ToPrint']) AND $_POST['ToPrint'])
 ?>
 <html>
 <head>
-    <title>Logiciel de gestion Qu�bec Natation</title>
+    <title>Logiciel de gestion Québec Natation</title>
     <link rel="STYLESHEET" type="text/css" href="style.css">
     <link rel="STYLESHEET" type="text/css" href="horaire.css">
 
