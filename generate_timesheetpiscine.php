@@ -23,7 +23,6 @@ if(isset($_POST['FORMIDPiscine'])){
 	GROUP BY Jour, Semaine, IDPiscine, Salaire, IDEmploye, Role
 	ORDER BY  IDEmploye ASC,  Role ASC, Salaire ASC, IDPiscine ASC, Semaine ASC,  Jour ASC";
 	//ok now this the real shit, premi?re boucle pour les diff?rentes piscines
-	print($Req);
     $SQL->SELECT($Req);
 	$TimeSheet = array();
 	$OldIDEmploye="";
