@@ -25,10 +25,9 @@ if(isset($Pinfo)){
 	FROM 
 	ressource JOIN periode
 	ON ressource.IDPeriode=periode.IDPeriode
-	WHERE ".$sql_statement_week_1." or ".$sql_statement_week_2." AND IDEmploye<>0 AND periode.IDSession = ".$_ACTIVE['Session']."
+	WHERE (".$sql_statement_week_1." or ".$sql_statement_week_2.") AND IDEmploye<>0 AND periode.IDSession = ".$_ACTIVE['Session']."
 	GROUP BY Jour, Semaine, IDPiscine, Salaire, IDEmploye, Role
 	ORDER BY  IDEmploye ASC,  Role ASC, Salaire ASC, IDPiscine ASC, Semaine ASC,  Jour ASC";
-
 
 	//ok now this the real shit, premi?re boucle pour les diff?rentes piscines
 	$SQL->SELECT($Req);
