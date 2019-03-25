@@ -63,7 +63,7 @@ function generate_sql_extended_semaine_query($semaine){
 	$hour_duration = 60*60;
 	$lower_end = $semaine - $hour_duration;
 	$upper_end = $semaine + $hour_duration;
-	$sql_statement = "Semaine IN (".$lower_end.",".$upper_end.")";
+	$sql_statement = "Semaine IN (".$lower_end.",".$upper_end.",".$semaine.")";
 
 	return $sql_statement;
 }
