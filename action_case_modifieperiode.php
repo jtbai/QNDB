@@ -68,13 +68,13 @@ foreach($SP as $k=>$v){
 	$ArrayMap4 = "MultiVar_Periode".$k.'4';
 	$ArrayMap3 = "MultiVar_Periode".$k.'3';
 	if ($_POST[$ArrayMap5]=="" or $_POST[$ArrayMap4]=="" or $_POST[$ArrayMap3] ==""){
-		$ReqSP = "DELETE FROM Periode WHERE IDPeriode = ".$k;
+		$ReqSP = "DELETE FROM periode WHERE IDPeriode = ".$k;
 			$SQL2->QUERY($ReqSP);
 		$ReqSP = "DELETE FROM ressource WHERE IDPeriode = ".$k;
 			$SQL2->QUERY($ReqSP);
 		$ReqSP .="DELETE FROM cours WHERE IDPeriode = ".$k;
 	}else
-		$ReqSP = "UPDATE Periode SET Semaine=".get_last_sunday(0,mktime(0,0,0,$_POST[$ArrayMap4],$_POST[$ArrayMap5],$_POST[$ArrayMap3]))." WHERE IDPeriode = ".$k;
+		$ReqSP = "UPDATE periode SET Semaine=".get_last_sunday(0,mktime(0,0,0,$_POST[$ArrayMap4],$_POST[$ArrayMap5],$_POST[$ArrayMap3]))." WHERE IDPeriode = ".$k;
 
 $SQL2->QUERY($ReqSP);
 
