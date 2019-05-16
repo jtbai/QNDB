@@ -10,7 +10,11 @@ while($Rep = $SQL->FetchArray())
 if(!isset($TimeSheet)){
 	//prepare the array
 	$TimeSheet = array();
-	$Req = "SELECT * FROM timesheet WHERE IDPaye=".$_GET['FORMIDPaye']." AND (`0`+`1`+`2`+`3`+`4`+`5`+`6`+`7`+`8`+`9`+`10`+`11`+`12`+`13`+`Ajustement`)*Salaire<>0 ORDER BY IDEmploye ASC, Role ASC, Salaire ASC";
+
+	// J'ai enlevé cette condition dans la requete plus basse... qu'est-ce que j'ai cassé?
+	// AND (`0`+`1`+`2`+`3`+`4`+`5`+`6`+`7`+`8`+`9`+`10`+`11`+`12`+`13`+`Ajustement`)*Salaire
+    //
+	$Req = "SELECT * FROM timesheet WHERE IDPaye=".$_GET['FORMIDPaye']." ORDER BY IDEmploye ASC, Role ASC, Salaire ASC";
 	$SQL->select($Req);
 	$OLDID = 0;
 	$OLDSalaire = 0;
@@ -122,7 +126,10 @@ $MainOutput->CloseCol();
 
 $c = "two";
 foreach($TimeSheet as $IDEmploye =>$v1){
-$InfoE = get_info('employe',$IDEmploye);
+    $InfoE = get_info('employe',$IDEmploye);
+if($IDEmploye==1238){
+    print($InfoE);
+}
 	foreach($v1 as $Role => $v2){
 		
 		foreach($v2 as $Salaire => $v3){
