@@ -51,10 +51,10 @@ foreach($Output as $Semaine=>$Jour){
     foreach($Jour as $JourCourant => $Cours){
         $MainOutput->OpenCol('100%');
         foreach($Cours as $CoursCourant){
-        if($IDPiscine <> $CoursCourant['IDPiscine']['IDPiscine']){
+            if($IDPiscine <> $CoursCourant['IDPiscine']){
            $MainOutput->AddTexte($Piscine[$CoursCourant['IDPiscine']]['Nom'],'Titre');
            $MainOutput->br();
-           $IDPiscine = $CoursCourant['IDPiscine']['IDPiscine'];  
+           $IDPiscine = $CoursCourant['IDPiscine'];
         }
               
             $MainOutput->Addlink('index.php?Section=ModifieCours&AllSession=FALSE&IDCours='.$CoursCourant['IDCours'],$Niveaux[$CoursCourant['IDNiveau']]['Code']);
