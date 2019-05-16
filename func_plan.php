@@ -35,9 +35,11 @@ $Safe = "#FFFFFF";
 	$Output->inputhidden_env('Action','CoursPlan');
 	$Output->inputhidden_env('IDPeriode',$IDPeriode);
 	foreach( file('plan/'.$PlanInfo['Fichier']) as $line){
-		if($Zonage = strstr($line,'<-')){
-			$InsZone = "";
-			$NoZone = substr($Zonage,2,1);
+
+        preg_match('/<-([0-9]+)->/', $line, $output_array);
+		if(count($output_array)>0){
+            $InsZone="";
+			$NoZone = $output_array[1];
 			if($ToPrint){
 				if(isset($Zone[$NoZone])){
 					$CoursInfo = get_info('cours',$Zone[$NoZone]);
@@ -77,7 +79,7 @@ $Safe = "#FFFFFF";
 				}
 			}	
 
-		//check s'il manque un mon sur cette période la
+		//check s'il manque un mon sur cette pï¿½riode la
 			if(isset($Monit[$Zone[$NoZone]])){
 				if($Monit[$Zone[$NoZone]]=="M")
 					$line = ereg_replace('bgcolor=#FFFFFF','bgcolor='.$Mon,$line);
