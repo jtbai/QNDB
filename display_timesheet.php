@@ -127,9 +127,7 @@ $MainOutput->CloseCol();
 $c = "two";
 foreach($TimeSheet as $IDEmploye =>$v1){
     $InfoE = get_info('employe',$IDEmploye);
-if($IDEmploye==1238){
-    print($InfoE);
-}
+
 	foreach($v1 as $Role => $v2){
 		
 		foreach($v2 as $Salaire => $v3){
