@@ -15,7 +15,7 @@ if($_POST['MultiVar_StartTime1']=="")
 
 $ACT = "";
 if($_POST['MultiVar_EndTime2']=="" or $_POST['MultiVar_EndTime2']==0 OR $_POST['MultiVar_StartTime2']==0 OR $_POST['MultiVar_StartTime2']==""){
-	//cas oï¿½ il manque soit l'heure de dï¿½but et/ou de fin
+	//cas o? il manque soit l'heure de d?but et/ou de fin
 	$ACT = "DELETE";
 }else{
 	//on cheke les overlap
@@ -30,7 +30,7 @@ if($_POST['MultiVar_EndTime2']=="" or $_POST['MultiVar_EndTime2']==0 OR $_POST['
 	if(!$OverLap){
 	$ACT = "UPDATE";
 
-		//trouver les pï¿½riodes avant qui doivent ajuster leurs heures
+		//trouver les p?riodes avant qui doivent ajuster leurs heures
 		$Req = "SELECT IDPeriode FROM periode WHERE IDPiscine=".$PeriodeIniInfo['IDPiscine']." AND IDSession=".$PeriodeIniInfo['IDSession']." AND End=".$PeriodeIniInfo['Start']." AND Jour=".$PeriodeIniInfo['Jour']." Limit 0,1";
 		$SQL->SELECT($Req);
 		while($Rep = $SQL->FetchArray()){
@@ -42,7 +42,7 @@ if($_POST['MultiVar_EndTime2']=="" or $_POST['MultiVar_EndTime2']==0 OR $_POST['
 			$Req2 = "UPDATE periode set End = ".$NStart." WHERE IDPeriode in (".substr($Couple,1).")";
 			$SQL2->QUERY($Req2);
 		}
-		//Trouver les pï¿½riods aprï¿½s qui doivent faire changer leur heure
+		//Trouver les p?riods apr?s qui doivent faire changer leur heure
 		$Req = "SELECT IDPeriode FROM periode WHERE IDPiscine=".$PeriodeIniInfo['IDPiscine']." AND IDSession=".$PeriodeIniInfo['IDSession']." AND Start=".$PeriodeIniInfo['End']." AND Jour=".$PeriodeIniInfo['Jour']." Limit 0,1";
 		$SQL->SELECT($Req);
 		while($Rep = $SQL->FetchArray()){
@@ -55,7 +55,7 @@ if($_POST['MultiVar_EndTime2']=="" or $_POST['MultiVar_EndTime2']==0 OR $_POST['
 			$SQL2->QUERY($Req2);
 		}
 	}else
-		$WarnOutput->addtexte("Le changement n'a pas pu Ãªtre effectuÃ©: vous Ã©crasez une pÃ©riode adjacente",'Warning');
+		$WarnOutput->addtexte("Le changement n'a pas pu être effectué: vous écrasez une période adjacente",'Warning');
 	
 }
 

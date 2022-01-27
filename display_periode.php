@@ -262,7 +262,7 @@ $MainOutput->OpenRow();
 		
 		
 		$Output = array(0=>new HTML,1=>new HTML,2=>new HTML,3=>new HTML,4=>new HTML,5=>new HTML,6=>new HTML);
-		$Req = "SELECT DISTINCT Jour, Start, round((End-Start)/60) as Duree FROM periode WHERE IDSession=".$_ACTIVE['Session']." AND IDPiscine=".$v['IDPiscine']." GROUP BY Jour, `Start` ORDER BY Jour ASC, `Start` ASC";
+		$Req = "SELECT DISTINCT Jour, Start, round((max(End)-max(Start))/60) as Duree FROM periode WHERE IDSession=".$_ACTIVE['Session']." AND IDPiscine=".$v['IDPiscine']." GROUP BY Jour, `Start` ORDER BY Jour ASC, `Start` ASC";
 		$SQL->SELECT($Req);
 		$OldStart = 0;
 		$OldJour = -1;

@@ -1,6 +1,6 @@
 <?PHP
 
-// il faudrait ajouter de quoi ici pour vï¿½rifier qu'il n'y pas pas dï¿½jï¿½ un cours du mï¿½me niveau de fait
+// il faudrait ajouter de quoi ici pour v?rifier qu'il n'y pas pas d?j? un cours du m?me niveau de fait
 // question de pas se ramasser avec 300 niveau 2 exemple
 
 $Last1 = get_last('periode');
@@ -33,7 +33,7 @@ while($c<$NBC){
 	while($p<$NBP){
 		$Time = $End;
 		$End = $Time + $Duration*60; 
-		$SQL->SELECT("SELECT IDPeriode, max(Semaine) as MaxSemaine FROM periode WHERE IDPiscine=".$_POST['FORMIDPiscine']." AND Jour =".date("w",$Date)." AND Start=".$Time." AND IDSession = ".$_ACTIVE['Session']." GROUP BY IDPiscine, Jour, Start, IDSession");
+		$SQL->SELECT("SELECT max(Semaine) as MaxSemaine FROM periode WHERE IDPiscine=".$_POST['FORMIDPiscine']." AND Jour =".date("w",$Date)." AND Start=".$Time." AND IDSession = ".$_ACTIVE['Session']." GROUP BY IDPiscine, Jour, Start, IDSession");
 		$NomPiscine = $PInfo['Nom'];
 		$NomJour = $JourN[date("w",$Date)];
 		$Start = floor($Time/3600)."h";
@@ -45,11 +45,11 @@ while($c<$NBC){
 				$SQL->INSERT("INSERT INTO periode(`IDPiscine`,`Semaine`,`Jour`,`Start`,`End`,`IDSession`) VALUES(".$_POST['FORMIDPiscine'].",".get_last_sunday(0,$Date).",".date("w",$Date).",".$Time.",".$End.",".$_ACTIVE['Session'].")");
 
 				if($Rep['MaxSemaine']<>$SemaineJustCree)
-					$Allonge .= $NomJour.'. '.$Start.' à '.$NomPiscine.' <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ('.date('j',$Date).' '.$MoisN[intval(date('n',$Date))].') <br>';
+					$Allonge .= $NomJour.'. '.$Start.' ? '.$NomPiscine.' <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ('.date('j',$Date).' '.$MoisN[intval(date('n',$Date))].') <br>';
 				else
 					$SemaineJustCree = get_last_sunday(0,$Date);
 			}else{
-				$Deja .= $NomJour.'. '.$Start.' à '.$NomPiscine.' <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-  ('.date('j',$Date).' '.$MoisN[intval(date('n',$Date))].') <br>';
+				$Deja .= $NomJour.'. '.$Start.' ? '.$NomPiscine.' <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-  ('.date('j',$Date).' '.$MoisN[intval(date('n',$Date))].') <br>';
 			}
 
 			$p++;
@@ -76,16 +76,16 @@ while($Rep = $SQL->FetchArray()){
 $Req = "INSERT INTO ressource(`IDPeriode`,`IDCours`,`NoRessource`,`Role`) VALUES".substr($Couple,1);
 $SQL->INSERT($Req);
 if($Couple<>"")
-	$WarnOutput->AddTexte('Période(s) ajoutée(s)','warning');
+	$WarnOutput->AddTexte('P?riode(s) ajout?e(s)','warning');
 if($Deja<>""){
 $WarnOutput->br();
-$WarnOutput->Addtexte('Ces périodes existent déjà ','Warning');
+$WarnOutput->Addtexte('Ces p?riodes existent d?j?','Warning');
 $WarnOutput->br();
 $WarnOutput->AddTexte($Deja,'Warning');
 }
 if($Allonge<>""){
 $WarnOutput->br();
-$WarnOutput->Addtexte('Ces périodes ont été allongées','Warning');
+$WarnOutput->Addtexte('Ces p?riodes ont ?t? allong?es','Warning');
 $WarnOutput->br();
 $WarnOutput->AddTexte($Allonge,'Warning');
 }

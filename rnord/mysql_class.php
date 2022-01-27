@@ -10,8 +10,8 @@ class SqlClass
 {
 	var $server = "localhost";
 	var $database = "QNDB";
-	var $username = "root";
-	var $password = "chille69";
+    var $username = "qcnat_webapps";
+    var $password = "LesBellesPiscines26!";
 	var $debug = 0;
 	var $show_errors = true;
 	var $logfile = "./mysql.log";

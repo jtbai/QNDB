@@ -71,7 +71,7 @@ echo $MainOutput->Send(1);
 $semaine_bottom_threshold = $_GET['Semaine'] - 3600;
 $semaine_top_threshold = $_GET['Semaine'] + 3600;
 
-$Req = "SELECT periode.IDPeriode, periode.IDPiscine, group_concat(Role) as Missing, Jour, Start, round((End-Start)/60) as Duree, Nom FROM periode JOIN ressource JOIN piscine ON piscine.IDPiscine = periode.IDPiscine AND ressource.IDPeriode = periode.IDPeriode WHERE (Semaine<='".$semaine_top_threshold."' and Semaine>='".$semaine_bottom_threshold."')  AND IDEmploye = 0 GROUP BY IDPiscine, Jour, Start ORDER BY Nom ASC, Jour ASC, Start ASC";
+$Req = "SELECT min(periode.IDPeriode) as IDPeriode, periode.IDPiscine, group_concat(Role) as Missing, Jour, Start, round((max(End)-max(Start))/60) as Duree, Nom FROM periode JOIN ressource JOIN piscine ON piscine.IDPiscine = periode.IDPiscine AND ressource.IDPeriode = periode.IDPeriode WHERE (Semaine<='".$semaine_top_threshold."' and Semaine>='".$semaine_bottom_threshold."')  AND IDEmploye = 0 GROUP BY IDPiscine, Jour, Start ORDER BY Nom ASC, Jour ASC, Start ASC";
 $SQL->SELECT($Req);
 $OldIDPiscine = "";
 $Start=FALSE;

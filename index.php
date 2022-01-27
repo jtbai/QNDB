@@ -69,14 +69,14 @@ if (isset($_POST['ToPrint']) AND $_POST['ToPrint'])
 ?>
 <html>
 <head>
-    <title>Logiciel de gestion QuÃ©bec Natation</title>
+    <title>Logiciel de gestion Québec Natation</title>
     <link rel="STYLESHEET" type="text/css" href="style.css">
     <link rel="STYLESHEET" type="text/css" href="horaire.css">
 
 </head>
 <?PHP
 
-// va chercher les valeur de section passï¿½ par get ou post
+// va chercher les valeur de section pass? par get ou post
 if (isset($_GET['Section']))
     $Section = $_GET['Section'];
 elseif (isset($_POST['Section']))
@@ -86,9 +86,9 @@ elseif (!isset($Section))
 
 if (!isset($_COOKIE['IDEmploye']))
     $Section = "Accueil";
-//si c'est section est pas settï¿½ nulle part, c'est qu'on veut aller a l'accueil	
+//si c'est section est pas sett? nulle part, c'est qu'on veut aller a l'accueil	
 
-//Dï¿½claration de variable de contenu
+//D?claration de variable de contenu
 
 ?>
 

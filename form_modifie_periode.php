@@ -2,13 +2,13 @@
 $NDay = get_day_list();
 if(!isset($_GET['FORMIDPeriode'])){
 
-$MainOutput->AddForm('Modifier une période','index.php','GET');
+$MainOutput->AddForm('Modifier une pÃ©riode','index.php','GET');
 $MainOutput->Inputhidden_env('Section','Modifie_Periode');
 $Piscine = get_active('piscine');
 	$Ar = array();
 foreach($Piscine as $v){
-	$Req = "SELECT DISTINCT IDPeriode, IDPiscine, Jour, Start, End FROM periode WHERE IDSession=".$_ACTIVE['Session']."
-			AND IDPiscine = ".$v['IDPiscine']." GROUP BY Jour, Start ORDER BY Jour ASC, Start ASC";
+	$Req = "SELECT DISTINCT IDPeriode, Jour, Start, End FROM periode WHERE IDSession=".$_ACTIVE['Session']."
+			AND IDPiscine = ".$v['IDPiscine']." GROUP BY IDPeriode, Jour, Start, End ORDER BY Jour ASC, Start ASC";
 	$SQL->SELECT($Req);
 	while($Rep = $SQL->FetchArray()){
 		$sh = intval($Rep['Start']/60/60);
@@ -19,10 +19,10 @@ foreach($Piscine as $v){
 		$em = bcmod($Rep['End'],3600)/60;
 		if($em==0)
 		$em="";
-		$Ar[$Rep[0]] = $v['Nom']." - ".$NDay[$Rep['Jour']]." ".$sh."h".$sm." à ".$eh."h".$em;
+		$Ar[$Rep[0]] = $v['Nom']." - ".$NDay[$Rep['Jour']]." ".$sh."h".$sm." Ã  ".$eh."h".$em;
 	}
 }
-	$MainOutput->InputSelect('IDPeriode',$Ar,'','Periode');
+	$MainOutput->InputSelect('IDPeriode',$Ar,'', 'Periode');
 	$MainOutput->FormSubmit('Modifier');
 }else{
 	$PeriodeInfo = get_info('periode',$_GET['FORMIDPeriode']);
@@ -36,10 +36,10 @@ foreach($Piscine as $v){
 		if($em==0)
 		$em="";
 	$PiscineInfo = get_info('piscine',$PeriodeInfo['IDPiscine']);
-	$MainOutput->AddForm($PiscineInfo['Nom']." - ".$NDay[$PeriodeInfo['Jour']]." ".$sh."h".$sm." à ".$eh."h".$em);
+	$MainOutput->AddForm($PiscineInfo['Nom']." - ".$NDay[$PeriodeInfo['Jour']]." ".$sh."h".$sm." ï¿½ ".$eh."h".$em);
 	$MainOutput->Inputhidden_env('Action','Modifie_Periode');
 	$MainOutput->Inputhidden_env('IDPeriode',$_GET['FORMIDPeriode']);
-	$MainOutput->Inputtime('StartTime','Heure de début',$PeriodeInfo['Start'],array('Date'=>FALSE,'Time'=>TRUE));
+	$MainOutput->Inputtime('StartTime','Heure de dï¿½but',$PeriodeInfo['Start'],array('Date'=>FALSE,'Time'=>TRUE));
 	$MainOutput->Inputtime('EndTime','Heure de fin',$PeriodeInfo['End'],array('Date'=>FALSE,'Time'=>TRUE));
 	$Req = "SELECT IDPlan, Nom FROM plan ORDER BY Nom ASC";
 	$MainOutput->InputSelect('IDPlan',$Req,$PeriodeInfo['IDPlan'],'Plan de piscine');
